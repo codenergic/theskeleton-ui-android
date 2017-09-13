@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion setup.compileSdkVersion
+    buildToolsVersion setup.buildToolsVersion
+
+    defaultConfig {
+        applicationId setup.applicationId
+        minSdkVersion setup.minSdkVersion
+        targetSdkVersion setup.targetSdkVersion
+        versionCode buildVersionCode()
+        versionName buildVersionName()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE'
+    }
+}
+
+dependencies {
+    rootProject.appDependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+}

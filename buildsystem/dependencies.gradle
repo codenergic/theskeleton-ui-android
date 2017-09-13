@@ -1,0 +1,182 @@
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+
+ext {
+    multidex = '1.0.1'
+    playService = '10.2.6'
+    supportLibrary = '25.3.1'
+    constraintLayout = '1.0.2'
+
+    glide = '3.7.0'
+    paginate = '0.5.1'
+    material = '1.2.2'
+    butterknife = '8.8.1'
+    crouton = '1.8.5@aar'
+    calligraphy = '2.3.0'
+    iconics = '2.5.8@aar'
+    circleImageView = '2.0.0'
+    autofitTextView = '0.2.1'
+    saripaar = '2.1.0-SNAPSHOT'
+    smartTabLayout = '1.6.1@aar'
+    circleIndicator = '1.2.2@aar'
+    autoScrollViewPager = '1.1.2'
+    materialTypeFace = '2.2.0.1.original@aar'
+
+    rxJava = '1.2.7'
+    rxAndroid = '1.2.1'
+    rxBinding = '1.0.1'
+    rxImagePicker = '1.1.5'
+    rxProguardRules = '1.2.7.0'
+
+    gson = '2.8.0'
+    retrofit = '2.3.0'
+
+    dagger = '2.0'
+    dexter = '4.1.0'
+    timber = '4.5.1'
+
+    junit = '4.12'
+    mockito = '2.1.0'
+
+    def androidLibs = [
+            appCompat       : "com.android.support:appcompat-v7:$supportLibrary",
+            design          : "com.android.support:design:$supportLibrary",
+            percent         : "com.android.support:percent:$supportLibrary",
+            multidex        : "com.android.support:multidex:$multidex",
+            constraintLayout: "com.android.support.constraint:constraint-layout:$constraintLayout"
+    ]
+
+    def googleLibs = [
+            maps     : "com.google.android.gms:play-services-maps:$playService",
+            location : "com.google.android.gms:play-services-location:$playService",
+            identity : "com.google.android.gms:play-services-identity:$playService",
+            analytics: "com.google.android.gms:play-services-analytics:$playService",
+            gcm      : "com.google.android.gms:play-services-gcm:$playService"
+    ]
+
+    def uiLibs = [
+            glide              : "com.github.bumptech.glide:glide:$glide",
+            paginate           : "com.github.markomilos:paginate:$paginate",
+            material           : "com.github.rey5137:material:$material",
+            butterknife        : "com.jakewharton:butterknife:$butterknife",
+            butterknifeCompiler: "com.jakewharton:butterknife-compiler:$butterknife",
+            calligraphy        : "uk.co.chrisjenx:calligraphy:$calligraphy",
+            iconics            : "com.mikepenz:iconics-core:$iconics",
+            circleImageView    : "de.hdodenhof:circleimageview:$circleImageView",
+            autofitTextView    : "me.grantland:autofittextview:$autofitTextView",
+            saripaar           : "com.mobsandgeeks:android-saripaar:$saripaar",
+            smartTabLayout     : "com.ogaclejapan.smarttablayout:library:$smartTabLayout",
+            circleIndicator    : "me.relex:circleindicator:$circleIndicator",
+            materialTypeFace   : "com.mikepenz:google-material-typeface:$materialTypeFace",
+            crouton            : "de.keyboardsurfer.android.widget:crouton:$crouton",
+            autoScrollViewPager: "cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:$autoScrollViewPager"
+    ]
+
+    def rxLibs = [
+            rxJava         : "io.reactivex:rxjava:$rxJava",
+            rxAndroid      : "io.reactivex:rxandroid:$rxAndroid",
+            rxBinding      : "com.jakewharton.rxbinding:rxbinding:$rxBinding",
+            rxImagePicker  : "com.mlsdev.rximagepicker:library:$rxImagePicker",
+            rxProguardRules: "com.artemzin.rxjava:proguard-rules:$rxProguardRules"
+    ]
+
+    def networkLibs = [
+            gson    : "com.google.code.gson:gson:$gson",
+            retrofit: "com.squareup.retrofit2:retrofit:$retrofit"
+    ]
+
+    def otherLibs = [
+            dagger        : "com.google.dagger:dagger:$dagger",
+            daggerCompiler: "com.google.dagger:dagger-compiler:$dagger",
+            dexter        : "com.karumi:dexter:$dexter",
+            timber        : "com.jakewharton.timber:timber:$timber"
+    ]
+
+    def testLibs = [
+            junit  : "junit:junit:$junit",
+            mockito: "org.mockito:mockito-core:$mockito"
+    ]
+
+    appDependencies = [
+            [configuration: "compile", dependency: androidLibs.appCompat],
+            [configuration: "compile", dependency: androidLibs.design],
+            [configuration: "compile", dependency: androidLibs.percent],
+            [configuration: "compile", dependency: androidLibs.multidex],
+            [configuration: "compile", dependency: androidLibs.constraintLayout],
+
+            [configuration: "compile", dependency: googleLibs.maps],
+            [configuration: "compile", dependency: googleLibs.location],
+            [configuration: "compile", dependency: googleLibs.identity],
+            [configuration: "compile", dependency: googleLibs.analytics],
+            [configuration: "compile", dependency: googleLibs.gcm],
+
+            [configuration: "compile", dependency: uiLibs.glide],
+            [configuration: "compile", dependency: uiLibs.paginate],
+            [configuration: "compile", dependency: uiLibs.material],
+            [configuration: "compile", dependency: uiLibs.butterknife],
+            [configuration: "annotationProcessor", dependency: uiLibs.butterknifeCompiler],
+            [configuration: "compile", dependency: uiLibs.calligraphy],
+            [configuration: "compile", dependency: uiLibs.iconics],
+            [configuration: "compile", dependency: uiLibs.circleImageView],
+            [configuration: "compile", dependency: uiLibs.autofitTextView],
+            [configuration: "compile", dependency: uiLibs.saripaar],
+            [configuration: "compile", dependency: uiLibs.smartTabLayout],
+            [configuration: "compile", dependency: uiLibs.circleIndicator],
+            [configuration: "compile", dependency: uiLibs.materialTypeFace],
+            [configuration: "compile", dependency: uiLibs.crouton, options: {
+                exclude group: 'com.google.android', module: 'support-v4'
+            }],
+            [configuration: "compile", dependency: uiLibs.autoScrollViewPager, options: {
+                exclude group: 'com.google.android', module: 'support-v4'
+            }],
+
+            [configuration: "compile", dependency: rxLibs.rxJava],
+            [configuration: "compile", dependency: rxLibs.rxAndroid],
+            [configuration: "compile", dependency: rxLibs.rxBinding],
+            [configuration: "compile", dependency: rxLibs.rxImagePicker],
+            [configuration: "compile", dependency: rxLibs.rxProguardRules],
+
+            [configuration: "compile", dependency: otherLibs.dagger],
+            [configuration: "annotationProcessor", dependency: otherLibs.daggerCompiler],
+            [configuration: "compile", dependency: otherLibs.dexter],
+            [configuration: "compile", dependency: otherLibs.timber],
+
+            [configuration: "testCompile", dependency: testLibs.junit],
+            [configuration: "testCompile", dependency: testLibs.mockito]
+    ]
+
+    domainDependencies = [
+            [configuration: "compile", dependency: androidLibs.appCompat],
+
+            [configuration: "compile", dependency: rxLibs.rxJava],
+            [configuration: "compile", dependency: rxLibs.rxAndroid],
+            [configuration: "compile", dependency: rxLibs.rxProguardRules],
+
+            [configuration: "compile", dependency: otherLibs.dagger],
+            [configuration: "annotationProcessor", dependency: otherLibs.daggerCompiler],
+            [configuration: "compile", dependency: otherLibs.timber],
+
+            [configuration: "testCompile", dependency: testLibs.junit],
+            [configuration: "testCompile", dependency: testLibs.mockito]
+    ]
+
+    dataDependencies = [
+            [configuration: "compile", dependency: rxLibs.rxJava],
+            [configuration: "compile", dependency: rxLibs.rxAndroid],
+            [configuration: "compile", dependency: rxLibs.rxProguardRules],
+
+            [configuration: "compile", dependency: networkLibs.gson],
+            [configuration: "compile", dependency: networkLibs.retrofit],
+
+            [configuration: "compile", dependency: otherLibs.timber],
+
+            [configuration: "testCompile", dependency: testLibs.junit],
+            [configuration: "testCompile", dependency: testLibs.mockito]
+    ]
+}
