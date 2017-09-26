@@ -25,6 +25,21 @@ android {
         }
     }
 
+    productFlavors {
+        dev {
+            buildConfigField 'String', 'BASE', '"https://theskeleton.codenergic.org/"'
+        }
+        stage {
+            buildConfigField 'String', 'BASE', '"https://theskeleton.codenergic.org/"'
+        }
+        beta {
+            buildConfigField 'String', 'BASE', '"https://theskeleton.codenergic.org/"'
+        }
+        store {
+            buildConfigField 'String', 'BASE', '"https://theskeleton.codenergic.org/"'
+        }
+    }
+
     lintOptions {
         abortOnError false
         checkReleaseBuilds false
@@ -36,8 +51,28 @@ android {
     }
 }
 
+configurations {
+    devDebugCompile
+    devReleaseCompile
+    stageDebugCompile
+    stageReleaseCompile
+    betaDebugCompile
+    betaReleaseCompile
+    storeDebugCompile
+    storeReleaseCompile
+}
+
 dependencies {
     rootProject.dataDependencies.each {
         add(it.configuration, it.dependency, it.options)
     }
+
+    devDebugCompile project(path: ':domain', configuration: 'debug')
+    devReleaseCompile project(path: ':domain', configuration: 'release')
+    stageDebugCompile project(path: ':domain', configuration: 'debug')
+    stageReleaseCompile project(path: ':domain', configuration: 'release')
+    betaDebugCompile project(path: ':domain', configuration: 'debug')
+    betaReleaseCompile project(path: ':domain', configuration: 'release')
+    storeDebugCompile project(path: ':domain', configuration: 'debug')
+    storeReleaseCompile project(path: ':domain', configuration: 'release')
 }

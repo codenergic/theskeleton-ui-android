@@ -28,16 +28,18 @@ ext {
     autoScrollViewPager = '1.1.2'
     materialTypeFace = '2.2.0.1.original@aar'
 
-    rxJava = '1.2.7'
-    rxAndroid = '1.2.1'
-    rxBinding = '1.0.1'
-    rxImagePicker = '1.1.5'
+    rxJava = '2.1.3'
+    rxAndroid = '2.0.1'
+    rxBinding = '2.0.0'
+    rxImagePicker = '2.0.2'
     rxProguardRules = '1.2.7.0'
+    rxLint = '1.6-SNAPSHOT'
 
     gson = '2.8.0'
     retrofit = '2.3.0'
+    okHttp = '3.9.0'
 
-    dagger = '2.0'
+    dagger = '2.11'
     dexter = '4.1.0'
     timber = '4.5.1'
 
@@ -79,23 +81,29 @@ ext {
     ]
 
     def rxLibs = [
-            rxJava         : "io.reactivex:rxjava:$rxJava",
-            rxAndroid      : "io.reactivex:rxandroid:$rxAndroid",
-            rxBinding      : "com.jakewharton.rxbinding:rxbinding:$rxBinding",
+            rxJava         : "io.reactivex.rxjava2:rxjava:$rxJava",
+            rxAndroid      : "io.reactivex.rxjava2:rxandroid:$rxAndroid",
+            rxBinding      : "com.jakewharton.rxbinding2:rxbinding:$rxBinding",
             rxImagePicker  : "com.mlsdev.rximagepicker:library:$rxImagePicker",
-            rxProguardRules: "com.artemzin.rxjava:proguard-rules:$rxProguardRules"
+            rxProguardRules: "com.artemzin.rxjava:proguard-rules:$rxProguardRules",
+            rxLint         : "nl.littlerobots.rxlint:rxlint:$rxLint"
     ]
 
     def networkLibs = [
-            gson    : "com.google.code.gson:gson:$gson",
-            retrofit: "com.squareup.retrofit2:retrofit:$retrofit"
+            gson             : "com.google.code.gson:gson:$gson",
+            retrofit         : "com.squareup.retrofit2:retrofit:$retrofit",
+            retrofitRxAdapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit",
+            gsonConverter    : "com.squareup.retrofit2:converter-gson:$retrofit",
+            okHttpLogging    : "com.squareup.okhttp3:logging-interceptor:$okHttp"
     ]
 
     def otherLibs = [
-            dagger        : "com.google.dagger:dagger:$dagger",
-            daggerCompiler: "com.google.dagger:dagger-compiler:$dagger",
-            dexter        : "com.karumi:dexter:$dexter",
-            timber        : "com.jakewharton.timber:timber:$timber"
+            dagger         : "com.google.dagger:dagger:$dagger",
+            daggerCompiler : "com.google.dagger:dagger-compiler:$dagger",
+            daggerSupport  : "com.google.dagger:dagger-android-support:$dagger",
+            daggerProcessor: "com.google.dagger:dagger-android-processor:$dagger",
+            dexter         : "com.karumi:dexter:$dexter",
+            timber         : "com.jakewharton.timber:timber:$timber"
     ]
 
     def testLibs = [
@@ -141,9 +149,12 @@ ext {
             [configuration: "compile", dependency: rxLibs.rxBinding],
             [configuration: "compile", dependency: rxLibs.rxImagePicker],
             [configuration: "compile", dependency: rxLibs.rxProguardRules],
+            [configuration: "compile", dependency: rxLibs.rxLint],
 
             [configuration: "compile", dependency: otherLibs.dagger],
             [configuration: "annotationProcessor", dependency: otherLibs.daggerCompiler],
+            [configuration: "annotationProcessor", dependency: otherLibs.daggerProcessor],
+            [configuration: "compile", dependency: otherLibs.daggerSupport],
             [configuration: "compile", dependency: otherLibs.dexter],
             [configuration: "compile", dependency: otherLibs.timber],
 
@@ -157,9 +168,12 @@ ext {
             [configuration: "compile", dependency: rxLibs.rxJava],
             [configuration: "compile", dependency: rxLibs.rxAndroid],
             [configuration: "compile", dependency: rxLibs.rxProguardRules],
+            [configuration: "compile", dependency: rxLibs.rxLint],
 
             [configuration: "compile", dependency: otherLibs.dagger],
             [configuration: "annotationProcessor", dependency: otherLibs.daggerCompiler],
+            [configuration: "annotationProcessor", dependency: otherLibs.daggerProcessor],
+            [configuration: "compile", dependency: otherLibs.daggerSupport],
             [configuration: "compile", dependency: otherLibs.timber],
 
             [configuration: "testCompile", dependency: testLibs.junit],
@@ -170,9 +184,13 @@ ext {
             [configuration: "compile", dependency: rxLibs.rxJava],
             [configuration: "compile", dependency: rxLibs.rxAndroid],
             [configuration: "compile", dependency: rxLibs.rxProguardRules],
+            [configuration: "compile", dependency: rxLibs.rxLint],
 
             [configuration: "compile", dependency: networkLibs.gson],
             [configuration: "compile", dependency: networkLibs.retrofit],
+            [configuration: "compile", dependency: networkLibs.retrofitRxAdapter],
+            [configuration: "compile", dependency: networkLibs.gsonConverter],
+            [configuration: "compile", dependency: networkLibs.okHttpLogging],
 
             [configuration: "compile", dependency: otherLibs.timber],
 

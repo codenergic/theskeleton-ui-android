@@ -34,6 +34,17 @@ android {
     }
 }
 
+configurations {
+    devDebugCompile
+    devReleaseCompile
+    stageDebugCompile
+    stageReleaseCompile
+    betaDebugCompile
+    betaReleaseCompile
+    storeDebugCompile
+    storeReleaseCompile
+}
+
 dependencies {
     rootProject.domainDependencies.each {
         add(it.configuration, it.dependency, it.options)
