@@ -1,9 +1,8 @@
 package org.codenergic.theskeleton.login;
 
 import org.codenergic.theskeleton.domain.DefaultSubscriber;
-import org.codenergic.theskeleton.domain.user.User;
-import org.codenergic.theskeleton.domain.user.interactor.Login;
-import org.codenergic.theskeleton.model.mapper.UserModelMapper;
+import org.codenergic.theskeleton.domain.authentication.Authentication;
+import org.codenergic.theskeleton.domain.authentication.interactor.Authenticate;
 
 import javax.inject.Inject;
 
@@ -12,25 +11,20 @@ import javax.inject.Inject;
  */
 
 public class LoginPresenter implements LoginContract.Presenter {
-
-    private final Login login;
-
-    private final UserModelMapper userModelMapper;
-
+    private final Authenticate authenticate;
     private final LoginContract.View view;
 
     @Inject
-    public LoginPresenter(LoginContract.View view, Login login, UserModelMapper userModelMapper) {
+    public LoginPresenter(LoginContract.View view, Authenticate authenticate) {
         this.view = view;
-        this.login = login;
-        this.userModelMapper = userModelMapper;
+        this.authenticate = authenticate;
     }
 
     @Override
     public void login(String username, String password) {
-        login.execute(new DefaultSubscriber<Boolean>() {
+        authenticate.execute(new DefaultSubscriber<Authentication>() {
             @Override
-            public void onNext(Boolean success) {
+            public void onNext(Authentication success) {
                 view.onLoginSuccess();
             }
 
@@ -38,6 +32,6 @@ public class LoginPresenter implements LoginContract.Presenter {
             public void onError(Throwable t) {
                 view.onLoginFailed(t.getMessage());
             }
-        }, Login.Params.forLogin(username, password));
+        }, new Authenticate.Params(username, password));
     }
 }

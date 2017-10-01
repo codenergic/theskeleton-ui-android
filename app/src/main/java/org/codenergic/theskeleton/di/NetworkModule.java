@@ -1,27 +1,67 @@
 package org.codenergic.theskeleton.di;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import javax.inject.Singleton;
-
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import org.codenergic.theskeleton.data.AuthInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
+
+import javax.inject.Singleton;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Created by putrice on 9/25/17.
  */
 @Module
 public class NetworkModule {
-
-    public static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ssZ";
+    @Provides
+    @Singleton
+    ObjectMapper providesObjectMapper() {
+        return new ObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
 
     @Provides
     @Singleton
-    Gson provideGson() {
-        return new GsonBuilder().setPrettyPrinting()
-            .setDateFormat(DATE_FORMAT)
-            .create();
+    OkHttpClient providesOkHttpClient(Set<Interceptor> interceptors) {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        for (Interceptor interceptor : interceptors) {
+            builder.addInterceptor(interceptor);
+        }
+        return builder.build();
     }
 
+    @Provides
+    @Singleton
+    Retrofit providesRetrofit(ObjectMapper objectMapper, OkHttpClient okHttpClient) {
+        return new Retrofit.Builder()
+                .baseUrl(org.codenergic.theskeleton.data.BuildConfig.BASE)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create(objectMapper))
+                .client(okHttpClient)
+                .build();
+    }
+
+    /**
+     * Register interceptors here
+     *
+     * @return
+     */
+    @Provides
+    @Singleton
+    Set<Interceptor> providesRetrofitInterceptors() {
+        Set<Interceptor> interceptors = new LinkedHashSet<>();
+        interceptors.add(new HttpLoggingInterceptor()
+                .setLevel(org.codenergic.theskeleton.BuildConfig.DEBUG ?
+                        HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE));
+        interceptors.add(new AuthInterceptor());
+        return interceptors;
+    }
 }
