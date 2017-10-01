@@ -8,7 +8,15 @@ public interface LoginContract {
 
     interface View {
 
-        void navigateToRegisterScreen();
+        void onLoginSuccess();
+
+        void onLoginFailed(String errorMessage);
+
+    }
+
+    interface Presenter {
+
+        void login(String username, String password);
 
     }
 

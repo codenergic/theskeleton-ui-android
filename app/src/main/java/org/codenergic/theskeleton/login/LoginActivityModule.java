@@ -10,8 +10,13 @@ import dagger.Provides;
 public class LoginActivityModule {
 
     @Provides
-    LoginContract.View provideLogin(LoginActivity loginActivity) {
+    LoginContract.View provideLoginActivity(LoginActivity loginActivity) {
         return loginActivity;
+    }
+
+    @Provides
+    LoginContract.Presenter provideLoginPresenter(LoginPresenter loginPresenter) {
+        return loginPresenter;
     }
 
 }

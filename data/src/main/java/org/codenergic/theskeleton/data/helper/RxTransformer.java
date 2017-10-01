@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 @Singleton
 public class RxTransformer {
 
-    private final FlowableTransformer<Flowable, Flowable> threadTransformer =
+    private static final FlowableTransformer<Flowable, Flowable> threadTransformer =
         observable -> observable
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread());
@@ -25,7 +25,7 @@ public class RxTransformer {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> FlowableTransformer<T, T> applyThreadTransformer() {
+    public static <T> FlowableTransformer<T, T> applyThreadTransformer() {
         return (FlowableTransformer<T, T>) threadTransformer;
     }
 }

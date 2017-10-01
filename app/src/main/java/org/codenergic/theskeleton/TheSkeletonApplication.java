@@ -1,5 +1,7 @@
 package org.codenergic.theskeleton;
 
+import org.codenergic.theskeleton.di.DaggerAppComponent;
+
 import android.app.Activity;
 import android.app.Application;
 
@@ -22,11 +24,11 @@ public class TheSkeletonApplication extends Application implements HasActivityIn
     }
 
     private void initDagger() {
-//        DaggerAppComponent
-//            .builder()
-//            .application(this)
-//            .build()
-//            .inject(this);
+        DaggerAppComponent
+            .builder()
+            .application(this)
+            .build()
+            .inject(this);
     }
 
     @Override

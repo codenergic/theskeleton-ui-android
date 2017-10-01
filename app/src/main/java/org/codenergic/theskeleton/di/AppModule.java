@@ -1,5 +1,8 @@
 package org.codenergic.theskeleton.di;
 
+import org.codenergic.theskeleton.data.user.repository.UserEntityRepository;
+import org.codenergic.theskeleton.domain.user.repository.UserRepository;
+
 import android.app.Application;
 import android.content.Context;
 
@@ -18,6 +21,12 @@ public class AppModule {
     @Singleton
     Context provideContext(Application application) {
         return application;
+    }
+
+    @Provides
+    @Singleton
+    UserRepository provideUserRepository(UserEntityRepository userEntityRepository) {
+        return userEntityRepository;
     }
 
 }
