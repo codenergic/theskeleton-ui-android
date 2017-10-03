@@ -2,13 +2,13 @@ package org.codenergic.theskeleton.domain.authentication;
 
 public class Authentication {
     private String accessToken;
-    private String expiresIn;
+    private long expiresIn;
     private String jti;
     private String refreshToken;
     private String scope;
     private String tokenType;
 
-    public Authentication(String accessToken, String expiresIn, String jti, String refreshToken, String scope, String tokenType) {
+    public Authentication(String accessToken, long expiresIn, String jti, String refreshToken, String scope, String tokenType) {
         this.accessToken = accessToken;
         this.expiresIn = expiresIn;
         this.jti = jti;
@@ -21,7 +21,7 @@ public class Authentication {
         return accessToken;
     }
 
-    public String getExpiresIn() {
+    public long getExpiresIn() {
         return expiresIn;
     }
 

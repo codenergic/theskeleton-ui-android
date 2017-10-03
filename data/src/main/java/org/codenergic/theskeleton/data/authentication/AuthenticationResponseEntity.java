@@ -2,11 +2,11 @@ package org.codenergic.theskeleton.data.authentication;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class AuthenticationResponseEntity {
+class AuthenticationResponseEntity {
     @JsonProperty("access_token")
     private String accessToken;
     @JsonProperty("expires_in")
-    private String expiresIn;
+    private long expiresIn;
     @JsonProperty
     private String jti;
     @JsonProperty("refresh_token")
@@ -16,27 +16,27 @@ public class AuthenticationResponseEntity {
     @JsonProperty("token_type")
     private String tokenType;
 
-    public String getAccessToken() {
+    String getAccessToken() {
         return accessToken;
     }
 
-    public String getExpiresIn() {
+    long getExpiresIn() {
         return expiresIn;
     }
 
-    public String getJti() {
+    String getJti() {
         return jti;
     }
 
-    public String getRefreshToken() {
+    String getRefreshToken() {
         return refreshToken;
     }
 
-    public String getScope() {
+    String getScope() {
         return scope;
     }
 
-    public String getTokenType() {
+    String getTokenType() {
         return tokenType;
     }
 }

@@ -1,5 +1,6 @@
 package org.codenergic.theskeleton.di;
 
+import android.content.Context;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dagger.Module;
@@ -52,16 +53,16 @@ public class NetworkModule {
     /**
      * Register interceptors here
      *
-     * @return
+     * @return list of interceptors
      */
     @Provides
     @Singleton
-    Set<Interceptor> providesRetrofitInterceptors() {
+    Set<Interceptor> providesRetrofitInterceptors(Context context) {
         Set<Interceptor> interceptors = new LinkedHashSet<>();
         interceptors.add(new HttpLoggingInterceptor()
                 .setLevel(org.codenergic.theskeleton.BuildConfig.DEBUG ?
                         HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE));
-        interceptors.add(new AuthInterceptor());
+        interceptors.add(new AuthInterceptor(context.getSharedPreferences("session", 0)));
         return interceptors;
     }
 }
