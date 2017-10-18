@@ -15,10 +15,11 @@ import dagger.android.AndroidInjectionModule;
  */
 @Singleton
 @Component(modules = {
-    AndroidInjectionModule.class,
-    AppModule.class,
-    NetworkModule.class,
-    ActivityBuilder.class})
+        AndroidInjectionModule.class,
+        AppModule.class,
+        NetworkModule.class,
+        ActivityBuilder.class
+})
 public interface AppComponent {
 
     void inject(TheSkeletonApplication app);

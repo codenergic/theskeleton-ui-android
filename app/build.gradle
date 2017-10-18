@@ -11,6 +11,7 @@ android {
         targetSdkVersion setup.targetSdkVersion
         versionCode buildVersionCode()
         versionName buildVersionName()
+        multiDexEnabled true
     }
 
     buildTypes {

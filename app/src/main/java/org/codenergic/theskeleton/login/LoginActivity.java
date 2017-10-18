@@ -65,5 +65,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public void onLoginFailed(String errorMessage) {
         //TODO using proper error message
         Timber.e(errorMessage);
+        Toast.makeText(this, "Login error: " + errorMessage, Toast.LENGTH_LONG).show();
     }
 }
