@@ -3,7 +3,7 @@ package org.codenergic.theskeleton.domain.authentication.interactor;
 import io.reactivex.Flowable;
 import org.codenergic.theskeleton.domain.UseCase;
 import org.codenergic.theskeleton.domain.authentication.Authentication;
-import org.codenergic.theskeleton.domain.authentication.AuthenticationRepository;
+import org.codenergic.theskeleton.domain.authentication.repository.AuthenticationRepository;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

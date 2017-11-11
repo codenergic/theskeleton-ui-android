@@ -9,6 +9,8 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import org.codenergic.theskeleton.data.AuthInterceptor;
+import org.codenergic.theskeleton.data.helper.TokenManager;
+
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -22,6 +24,7 @@ import java.util.Set;
  */
 @Module
 public class NetworkModule {
+
     @Provides
     @Singleton
     ObjectMapper providesObjectMapper() {
@@ -57,12 +60,18 @@ public class NetworkModule {
      */
     @Provides
     @Singleton
-    Set<Interceptor> providesRetrofitInterceptors(Context context) {
+    Set<Interceptor> providesRetrofitInterceptors(Context context, AuthInterceptor authInterceptor) {
         Set<Interceptor> interceptors = new LinkedHashSet<>();
         interceptors.add(new HttpLoggingInterceptor()
                 .setLevel(org.codenergic.theskeleton.BuildConfig.DEBUG ?
                         HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE));
-        interceptors.add(new AuthInterceptor(context.getSharedPreferences("session", 0)));
+        interceptors.add(authInterceptor);
         return interceptors;
+    }
+
+    @Provides
+    @Singleton
+    AuthInterceptor provideAuthInterceptor(TokenManager tokenManager) {
+        return new AuthInterceptor(tokenManager);
     }
 }

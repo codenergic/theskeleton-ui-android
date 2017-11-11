@@ -19,7 +19,6 @@ public class TheSkeletonApplication extends Application implements HasActivityIn
     @Override
     public void onCreate() {
         super.onCreate();
-
         initDagger();
     }
 

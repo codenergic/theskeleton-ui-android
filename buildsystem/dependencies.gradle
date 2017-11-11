@@ -35,12 +35,14 @@ ext {
     rxJava = '2.1.3'
     rxLint = '1.5'
     rxProguardRules = '1.2.7.0'
+    rxPreferences = '2.0.0-RC3'
 
     // Network and JSON Serializer
     autoValue = '1.5.1'
     okHttp = '3.9.0'
     retrofit = '2.3.0'
     retrofitJackson = '2.3.0'
+    javaxAnnotation = '1.2'
 
     // Dependency Injection
     dagger = '2.11'
@@ -91,7 +93,8 @@ ext {
             rxBinding      : "com.jakewharton.rxbinding2:rxbinding:$rxBinding",
             rxImagePicker  : "com.mlsdev.rximagepicker:library:$rxImagePicker",
             rxProguardRules: "com.artemzin.rxjava:proguard-rules:$rxProguardRules",
-            rxLint         : "nl.littlerobots.rxlint:rxlint:$rxLint"
+            rxLint         : "nl.littlerobots.rxlint:rxlint:$rxLint",
+            rxPreferences  : "com.f2prateek.rx.preferences2:rx-preferences:$rxPreferences"
     ]
 
     def networkLibs = [
@@ -99,7 +102,8 @@ ext {
             retrofit         : "com.squareup.retrofit2:retrofit:$retrofit",
             retrofitJackson  : "com.squareup.retrofit2:converter-jackson:$retrofitJackson",
             retrofitRxAdapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit",
-            okHttpLogging    : "com.squareup.okhttp3:logging-interceptor:$okHttp"
+            okHttpLogging    : "com.squareup.okhttp3:logging-interceptor:$okHttp",
+            javaxAnnotation  : "javax.annotation:javax.annotation-api:$javaxAnnotation"
     ]
 
     def otherLibs = [
@@ -163,6 +167,10 @@ ext {
             [configuration: "compile", dependency: otherLibs.dexter],
             [configuration: "compile", dependency: otherLibs.timber],
 
+            [configuration: "provided", dependency: networkLibs.autoValue],
+            [configuration: "annotationProcessor", dependency: networkLibs.autoValue],
+            [configuration: "compile", dependency: networkLibs.javaxAnnotation],
+
             [configuration: "testCompile", dependency: testLibs.junit],
             [configuration: "testCompile", dependency: testLibs.mockito]
     ]
@@ -181,6 +189,10 @@ ext {
             [configuration: "compile", dependency: otherLibs.daggerSupport],
             [configuration: "compile", dependency: otherLibs.timber],
 
+            [configuration: "provided", dependency: networkLibs.autoValue],
+            [configuration: "annotationProcessor", dependency: networkLibs.autoValue],
+            [configuration: "compile", dependency: networkLibs.javaxAnnotation],
+
             [configuration: "testCompile", dependency: testLibs.junit],
             [configuration: "testCompile", dependency: testLibs.mockito]
     ]
@@ -190,13 +202,15 @@ ext {
             [configuration: "compile", dependency: rxLibs.rxAndroid],
             [configuration: "compile", dependency: rxLibs.rxProguardRules],
             [configuration: "compile", dependency: rxLibs.rxLint],
+            [configuration: "compile", dependency: rxLibs.rxPreferences],
 
-//            [configuration: "compile", dependency: networkLibs.autoValue],
-//            [configuration: "annotationProcessor", dependency: networkLibs.autoValue],
+            [configuration: "provided", dependency: networkLibs.autoValue],
+            [configuration: "annotationProcessor", dependency: networkLibs.autoValue],
             [configuration: "compile", dependency: networkLibs.retrofit],
             [configuration: "compile", dependency: networkLibs.retrofitJackson],
             [configuration: "compile", dependency: networkLibs.retrofitRxAdapter],
             [configuration: "compile", dependency: networkLibs.okHttpLogging],
+            [configuration: "compile", dependency: networkLibs.javaxAnnotation],
 
             [configuration: "compile", dependency: otherLibs.timber],
 

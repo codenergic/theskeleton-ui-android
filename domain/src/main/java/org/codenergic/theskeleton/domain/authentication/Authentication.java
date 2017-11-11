@@ -8,7 +8,8 @@ public class Authentication {
     private String scope;
     private String tokenType;
 
-    public Authentication(String accessToken, long expiresIn, String jti, String refreshToken, String scope, String tokenType) {
+    public Authentication(String accessToken, long expiresIn, String jti, String refreshToken,
+        String scope, String tokenType) {
         this.accessToken = accessToken;
         this.expiresIn = expiresIn;
         this.jti = jti;
