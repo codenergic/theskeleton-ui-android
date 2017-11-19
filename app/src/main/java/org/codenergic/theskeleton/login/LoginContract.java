@@ -16,5 +16,6 @@ public interface LoginContract {
 
     interface Presenter {
         void login(String username, String password);
+        void checkSession();
     }
 }

@@ -2,6 +2,7 @@ package org.codenergic.theskeleton.login;
 
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
+import org.codenergic.theskeleton.main.MainActivity;
 import org.codenergic.theskeleton.register.RegisterActivity;
 
 import android.content.Intent;
@@ -57,8 +58,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void onLoginSuccess() {
-        //TODO handle when login success
         Toast.makeText(this, "Login succeed", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     @Override

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/cards_button_width"
+            android:layout_height="@dimen/cards_button_width"
+            android:src="@drawable/raisa"/>
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_toEndOf="@+id/imageView"
+                  android:orientation="vertical"
+                  android:layout_alignBottom="@+id/imageView" android:id="@+id/linearLayout"
+                  android:layout_alignParentTop="true"
+                  android:paddingLeft="@dimen/title_padding">
+        <TextView
+                android:text="Raisa Andriani"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView2"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textStyle="bold"
+                android:layout_weight="1" android:gravity="center_vertical"/>
+        <TextView
+                android:text="on Sep 26"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:id="@+id/textView3"
+                android:layout_weight="1"/>
+    </LinearLayout>
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/linearLayout"
+            android:layout_alignBottom="@+id/linearLayout"
+            android:id="@+id/relativeLayout"
+            android:layout_alignParentTop="true">
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_alignParentTop="true" android:layout_toStartOf="@+id/linearLayout3"
+                      android:layout_alignParentBottom="true">
+            <ImageView
+                    android:layout_width="@dimen/cards_action_button_width"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_favorite_border_black_24dp"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="213"
+                    android:textSize="@dimen/cards_button_text_size"
+                    android:gravity="center"
+                    android:id="@+id/editText"
+                    android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical" android:layout_alignParentTop="true"
+                      android:layout_toStartOf="@+id/linearLayout2" android:id="@+id/linearLayout3"
+                      android:layout_alignParentBottom="true">
+            <ImageView
+                    android:layout_width="@dimen/cards_action_button_width"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_chat_bubble_outline_black_24dp"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="213"
+                    android:textSize="@dimen/cards_button_text_size"
+                    android:gravity="center"
+                    android:id="@+id/editText2"
+                    android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical" android:layout_alignParentTop="true"
+                      android:layout_alignParentEnd="true" android:id="@+id/linearLayout2"
+                      android:layout_alignParentBottom="true">
+            <ImageView
+                    android:layout_width="@dimen/cards_action_button_width"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_turned_in_not_black_24dp"
+            />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/first_menu"
+           android:checkableBehavior="single">
+        <item android:id="@+id/navigation_item_attachment"
+              android:title="Bookmarks"/>
+        <item android:id="@+id/navigation_item_images"
+              android:title="Drafts"/>
+    </group>
+
+    <group android:id="@+id/second_menu"
+           android:checkableBehavior="single">
+        <item android:id="@+id/navigation_item_setting"
+              android:title="Settings"/>
+        <item android:id="@+id/navigation_item_help"
+              android:title="Help"/>
+    </group>
+</menu>

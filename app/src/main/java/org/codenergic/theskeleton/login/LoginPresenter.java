@@ -34,4 +34,9 @@ public class LoginPresenter implements LoginContract.Presenter {
             }
         }, new Authenticate.Params(username, password));
     }
+
+    @Override
+    public void checkSession() {
+
+    }
 }
