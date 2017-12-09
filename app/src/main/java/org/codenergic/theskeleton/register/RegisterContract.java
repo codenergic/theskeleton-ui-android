@@ -8,7 +8,15 @@ public interface RegisterContract {
 
     interface View {
 
-        void navigateToLoginScreen();
+        void onSignUpSuccess();
+
+        void onSignUpFailed(String message);
+
+    }
+
+    interface Presenter {
+
+        void signUp(String username, String password, String email);
 
     }
 

@@ -35,12 +35,12 @@ public class AuthInterceptor implements Interceptor {
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .header("Authorization", loginAuthorizationHeader)
                     .build());
-        } else if (tokenManager.getAccessToken().isEmpty()) {
-            return chain.proceed(original);
-        } else {
+        } else if (tokenManager.getAccessToken() != null) {
             return chain.proceed(original.newBuilder()
-                    .header("Authorization", "Bearer " + tokenManager.getAccessToken())
-                    .build());
+                .header("Authorization", "Bearer " + tokenManager.getAccessToken())
+                .build());
+        } else {
+            return chain.proceed(original);
         }
     }
 }

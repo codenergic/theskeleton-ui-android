@@ -41,11 +41,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract void setup();
 
+    public abstract BasePresenter attachPresenter();
+
     @Override
     protected void onDestroy() {
         if (unbinder != null) {
             unbinder.unbind();
         }
+
+        if(attachPresenter() != null) {
+            attachPresenter().onViewDestroy();
+        }
+
         super.onDestroy();
     }
 }

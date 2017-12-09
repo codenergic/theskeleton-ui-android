@@ -7,7 +7,7 @@ import dagger.Provides;
  * Created by diasa on 11/8/17.
  */
 @Module
-public class MainActivityModule {
+public class MainModule {
     @Provides
     MainContract.View provideMainActivity(MainActivity mainActivity) {
         return mainActivity;

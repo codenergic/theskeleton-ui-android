@@ -31,6 +31,7 @@ public class TokenManager extends AbstractPreferences {
     }
 
     public String getAccessToken() {
-        return getData(AUTH_TAG, AuthenticationEntity.class).getAccessToken();
+        AuthenticationEntity authenticationEntity = getData(AUTH_TAG, AuthenticationEntity.class);
+        return authenticationEntity == null ? null : authenticationEntity.getAccessToken();
     }
 }
