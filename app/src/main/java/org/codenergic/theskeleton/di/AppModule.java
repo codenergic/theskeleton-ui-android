@@ -5,7 +5,9 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import org.codenergic.theskeleton.data.authentication.repository.AuthenticationEntityRepository;
+import org.codenergic.theskeleton.data.user.repository.UserEntityRepository;
 import org.codenergic.theskeleton.domain.authentication.repository.AuthenticationRepository;
+import org.codenergic.theskeleton.domain.user.repository.UserRepository;
 
 import javax.inject.Singleton;
 
@@ -25,6 +27,12 @@ public class AppModule {
     AuthenticationRepository providesAuthenticationRepository(
         AuthenticationEntityRepository authenticationEntityRepository) {
         return authenticationEntityRepository;
+    }
+
+    @Provides
+    @Singleton
+    UserRepository providesUserRepository(UserEntityRepository userEntityRepository) {
+        return userEntityRepository;
     }
 
 }

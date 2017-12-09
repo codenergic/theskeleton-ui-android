@@ -1,5 +1,6 @@
 package org.codenergic.theskeleton.login;
 
+import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.domain.DefaultSubscriber;
 import org.codenergic.theskeleton.domain.authentication.Authentication;
 import org.codenergic.theskeleton.domain.authentication.interactor.Authenticate;
@@ -10,8 +11,10 @@ import javax.inject.Inject;
  * Created by putrice on 10/1/17.
  */
 
-public class LoginPresenter implements LoginContract.Presenter {
+public class LoginPresenter extends BasePresenter implements LoginContract.Presenter {
+
     private final Authenticate authenticate;
+
     private final LoginContract.View view;
 
     @Inject
@@ -36,7 +39,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void checkSession() {
-
+    protected void onViewDestroy() {
+        authenticate.clearAllSubscription();
     }
 }

@@ -10,6 +10,7 @@ import butterknife.BindView;
 import dagger.android.AndroidInjection;
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
+import org.codenergic.theskeleton.base.BasePresenter;
 
 /**
  * Created by diasa on 10/23/17.
@@ -18,10 +19,13 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
     @BindView(R.id.card_list)
     RecyclerView recyclerView;
+
     @BindView(R.id.drawer)
     DrawerLayout drawerLayout;
+
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
@@ -58,6 +62,11 @@ public class MainActivity extends BaseActivity implements MainContract.View {
             drawerLayout.closeDrawers();
             return true;
         });
+    }
+
+    @Override
+    public BasePresenter attachPresenter() {
+        return null;
     }
 
     @Override

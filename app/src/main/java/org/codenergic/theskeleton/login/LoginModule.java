@@ -7,7 +7,7 @@ import dagger.Provides;
  * Created by putrice on 9/27/17.
  */
 @Module
-public class LoginActivityModule {
+public class LoginModule {
 
     @Provides
     LoginContract.View provideLoginActivity(LoginActivity loginActivity) {

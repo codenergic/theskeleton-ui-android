@@ -68,6 +68,11 @@ public abstract class AbstractPreferences {
 
     protected <T> T getData(String tag, Class<T> classOfT) {
         String rawData = rxSharedPreferences.getString(tag).get();
+
+        if(rawData.isEmpty()) {
+            return null;
+        }
+
         try {
             return objectMapper.readValue(rawData, classOfT);
         } catch (IOException e) {

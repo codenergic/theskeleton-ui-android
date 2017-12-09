@@ -2,6 +2,7 @@ package org.codenergic.theskeleton.login;
 
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
+import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.main.MainActivity;
 import org.codenergic.theskeleton.register.RegisterActivity;
 
@@ -29,7 +30,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     EditText etPassword;
 
     @Inject
-    LoginContract.Presenter presenter;
+    LoginPresenter presenter;
 
     @Override
     public int getLayout() {
@@ -41,9 +42,17 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         AndroidInjection.inject(this);
     }
 
+    @Override
+    public BasePresenter attachPresenter() {
+        return presenter;
+    }
+
     @OnClick(R.id.btn_login)
     public void onButtonSubmitClick() {
-        presenter.login(etEmail.getText().toString(), etPassword.getText().toString());
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
+
+        presenter.login(email, password);
     }
 
     @OnClick(R.id.link_signup)
@@ -59,6 +68,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void onLoginSuccess() {
         Toast.makeText(this, "Login succeed", Toast.LENGTH_LONG).show();
+        navigateToMain();
+    }
+
+    private void navigateToMain() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
