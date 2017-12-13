@@ -48,7 +48,7 @@
             <ImageView
                     android:layout_width="@dimen/cards_action_button_width"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_favorite_border_black_24dp"
+                    app:srcCompat="@drawable/ic_favorite_border"
             />
             <TextView
                     android:layout_width="match_parent"
@@ -67,7 +67,7 @@
             <ImageView
                     android:layout_width="@dimen/cards_action_button_width"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_chat_bubble_outline_black_24dp"
+                    app:srcCompat="@drawable/ic_chat_bubble_outline"
             />
             <TextView
                     android:layout_width="match_parent"
@@ -86,7 +86,7 @@
             <ImageView
                     android:layout_width="@dimen/cards_action_button_width"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_turned_in_not_black_24dp"
+                    app:srcCompat="@drawable/ic_turned_in_not"
             />
         </LinearLayout>
     </RelativeLayout>

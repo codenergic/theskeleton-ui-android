@@ -44,7 +44,7 @@
                         android:layout_height="48dp"
                         android:background="@null"
                         android:contentDescription="@null"
-                        app:srcCompat="@drawable/ic_format_bold_black_24dp"/>
+                        app:srcCompat="@drawable/ic_format_bold"/>
 
                 <ImageButton
                         android:id="@+id/action_italic"
@@ -52,14 +52,14 @@
                         android:layout_height="48dp"
                         android:background="@null"
                         android:contentDescription="@null"
-                        app:srcCompat="@drawable/ic_format_italic_black_24dp"/>
+                        app:srcCompat="@drawable/ic_format_italic"/>
                 <ImageButton
                         android:id="@+id/action_underline"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:background="@null"
                         android:contentDescription="@null"
-                        app:srcCompat="@drawable/ic_format_underlined_black_24dp"/>
+                        app:srcCompat="@drawable/ic_format_underline"/>
 
                 <ImageButton
                         android:id="@+id/action_strikethrough"
@@ -67,7 +67,7 @@
                         android:layout_height="48dp"
                         android:background="@null"
                         android:contentDescription="@null"
-                        app:srcCompat="@drawable/ic_format_strikethrough_black_24dp"/>
+                        app:srcCompat="@drawable/ic_format_strikethrough"/>
 
                 <ImageButton
                         android:id="@+id/action_blockquote"
@@ -75,14 +75,14 @@
                         android:layout_height="48dp"
                         android:background="@null"
                         android:contentDescription="@null"
-                        app:srcCompat="@drawable/ic_format_quote_black_24dp"/>
+                        app:srcCompat="@drawable/ic_format_quote"/>
                 <ImageButton
                         android:id="@+id/action_insert_image"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:background="@null"
                         android:contentDescription="@null"
-                        app:srcCompat="@drawable/ic_insert_photo_black_24dp"/>
+                        app:srcCompat="@drawable/ic_insert_photo"/>
 
                 <ImageButton
                         android:id="@+id/action_insert_link"
@@ -90,7 +90,7 @@
                         android:layout_height="48dp"
                         android:background="@null"
                         android:contentDescription="@null"
-                        app:srcCompat="@drawable/ic_insert_link_black_24dp"/>
+                        app:srcCompat="@drawable/ic_insert_link"/>
             </LinearLayout>
         </HorizontalScrollView>
         <EditText
