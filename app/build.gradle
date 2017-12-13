@@ -12,6 +12,9 @@ android {
         versionCode buildVersionCode()
         versionName buildVersionName()
         multiDexEnabled true
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {

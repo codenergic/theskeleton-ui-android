@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/share"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_share"
+            android:title="Share">
+    </item>
+    <item
+            android:id="@+id/bookmark"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_bookmark"
+            android:title="Bookmark">
+    </item>
+</menu>

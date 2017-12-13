@@ -18,11 +18,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".register.RegisterActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".main.MainActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".register.RegisterActivity"/>
+        <activity android:name=".main.MainActivity"/>
+        <activity android:name=".editor.EditorActivity"/>
+        <activity android:name=".content.ContentActivity"
+                  android:parentActivityName=".main.MainActivity">
+        </activity>
 
     </application>
 

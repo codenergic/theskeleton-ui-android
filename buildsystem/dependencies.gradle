@@ -27,6 +27,7 @@ ext {
     paginate = '0.5.1'
     saripaar = '2.0.3'
     smartTabLayout = '1.6.1@aar'
+    richeditor = '1.2.2'
 
     // RX
     rxAndroid = '2.0.1'
@@ -112,7 +113,8 @@ ext {
             daggerSupport  : "com.google.dagger:dagger-android-support:$dagger",
             daggerProcessor: "com.google.dagger:dagger-android-processor:$dagger",
             dexter         : "com.karumi:dexter:$dexter",
-            timber         : "com.jakewharton.timber:timber:$timber"
+            timber         : "com.jakewharton.timber:timber:$timber",
+            richeditor     : "jp.wasabeef:richeditor-android:$richeditor"
     ]
 
     def testLibs = [
@@ -166,6 +168,7 @@ ext {
             [configuration: "compile", dependency: otherLibs.daggerSupport],
             [configuration: "compile", dependency: otherLibs.dexter],
             [configuration: "compile", dependency: otherLibs.timber],
+            [configuration: "compile", dependency: otherLibs.richeditor],
 
             [configuration: "provided", dependency: networkLibs.autoValue],
             [configuration: "annotationProcessor", dependency: networkLibs.autoValue],
