@@ -16,6 +16,7 @@ import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.content.ContentActivity;
 import org.codenergic.theskeleton.editor.EditorActivity;
 import org.codenergic.theskeleton.model.PostModel;
+import org.codenergic.theskeleton.profile.ProfileActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        ContentAdapter adapter = new ContentAdapter(dummyContent(),this);
+        ContentAdapter adapter = new ContentAdapter(dummyContent(), this);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(
                 recyclerView.getContext(),
@@ -81,6 +82,12 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
             drawerLayout.closeDrawers();
             return true;
         });
+
+        navigationView.getHeaderView(0)
+                .findViewById(R.id.profileImage)
+                .setOnClickListener((v) ->
+                    startActivity(new Intent(this, ProfileActivity.class)
+                ));
     }
 
     @Override
@@ -117,7 +124,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
         startActivity(new Intent(this, ContentActivity.class));
     }
 
-    private List<PostModel> dummyContent(){
+    private List<PostModel> dummyContent() {
         List<PostModel> posts = new ArrayList<>();
         posts.add(new PostModel()
                 .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
