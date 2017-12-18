@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import butterknife.BindView;
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
@@ -29,7 +29,7 @@ public class ProfileActivity extends BaseActivity implements AppBarLayout.OnOffs
     @BindView(R.id.materialup_appbar)
     AppBarLayout appBarLayout;
     @BindView(R.id.materialup_profile_image)
-    ImageView profileImage;
+    FrameLayout profileImage;
 
     private int mMaxScrollSize;
     private boolean mIsAvatarShown = true;
@@ -78,7 +78,7 @@ public class ProfileActivity extends BaseActivity implements AppBarLayout.OnOffs
     }
 
     private static class TabsAdapter extends FragmentPagerAdapter {
-        private static final int TAB_COUNT = 2;
+        private static final int TAB_COUNT = 3;
 
         TabsAdapter(FragmentManager fm) {
             super(fm);
@@ -96,7 +96,12 @@ public class ProfileActivity extends BaseActivity implements AppBarLayout.OnOffs
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return "Tab " + String.valueOf(position);
+            switch (position) {
+                case 0 : return "Ulasan";
+                case 1 : return "Cerita";
+                case 2 : return "Karya Tulis";
+                default: return "";
+            }
         }
     }
 }
