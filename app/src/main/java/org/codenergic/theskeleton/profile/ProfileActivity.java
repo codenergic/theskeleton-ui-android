@@ -78,7 +78,6 @@ public class ProfileActivity extends BaseActivity implements AppBarLayout.OnOffs
     }
 
     private static class TabsAdapter extends FragmentPagerAdapter {
-        private static final int TAB_COUNT = 3;
 
         TabsAdapter(FragmentManager fm) {
             super(fm);
@@ -86,21 +85,25 @@ public class ProfileActivity extends BaseActivity implements AppBarLayout.OnOffs
 
         @Override
         public int getCount() {
-            return TAB_COUNT;
+            return 3;
         }
 
         @Override
         public Fragment getItem(int i) {
-            return new Fragment();
+            return PostFragment.newInstance();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
-                case 0 : return "Ulasan";
-                case 1 : return "Cerita";
-                case 2 : return "Karya Tulis";
-                default: return "";
+                case 0:
+                    return "Ulasan";
+                case 1:
+                    return "Cerita";
+                case 2:
+                    return "Karya Tulis";
+                default:
+                    return "";
             }
         }
     }
