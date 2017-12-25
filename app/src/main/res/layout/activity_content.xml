@@ -30,10 +30,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
         <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
             <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
@@ -49,10 +48,37 @@
                     android:lineSpacingExtra="8dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
                     android:layout_below="@+id/title"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"/>
-
+            />
+            <LinearLayout
+                    android:id="@+id/comment_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:background="@color/light_grey"
+                    android:weightSum="1" android:layout_below="@+id/content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="@dimen/cards_button_width"
+                        android:layout_height="@dimen/cards_button_width"
+                        android:src="@drawable/raisa"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/textView4"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:gravity="center_vertical"
+                        android:text="Write comment..."
+                />
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/comment_link" android:layout_alignParentStart="true"/>
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

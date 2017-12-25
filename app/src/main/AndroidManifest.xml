@@ -22,9 +22,9 @@
         <activity android:name=".main.MainActivity"/>
         <activity android:name=".editor.EditorActivity"/>
         <activity android:name=".content.ContentActivity"
-                  android:parentActivityName=".main.MainActivity">
-        </activity>
-
+                  android:parentActivityName=".main.MainActivity"/>
+        <activity android:name=".content.CommentActivity"
+                  android:parentActivityName=".content.ContentActivity"/>
     </application>
 
 </manifest>

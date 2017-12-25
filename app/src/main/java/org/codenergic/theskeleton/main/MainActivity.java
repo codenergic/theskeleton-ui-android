@@ -117,7 +117,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
         startActivity(new Intent(this, ContentActivity.class));
     }
 
-    private List<PostModel> dummyContent(){
+    public static final List<PostModel> dummyContent(){
         List<PostModel> posts = new ArrayList<>();
         posts.add(new PostModel()
                 .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
