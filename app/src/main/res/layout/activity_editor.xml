@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,16 +14,15 @@
             android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
     </android.support.v7.widget.Toolbar>
-
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    >
+            android:layout_height="match_parent">
         <jp.wasabeef.richeditor.RichEditor
                 android:id="@+id/editor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/horizontalScrollView" android:layout_below="@+id/editText3"/>
+                android:layout_above="@+id/horizontalScrollView"
+                android:layout_below="@+id/editText3"/>
         <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,64 +30,56 @@
                 android:layout_alignParentStart="true"
                 android:id="@+id/horizontalScrollView"
                 android:background="@color/light_grey">
-
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-            >
-
-
+                    android:layout_height="wrap_content">
                 <ImageButton
                         android:id="@+id/action_bold"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/editor_image_button"
+                        android:layout_height="@dimen/editor_image_button"
                         android:background="@null"
                         android:contentDescription="@null"
                         app:srcCompat="@drawable/ic_format_bold"/>
-
                 <ImageButton
                         android:id="@+id/action_italic"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/editor_image_button"
+                        android:layout_height="@dimen/editor_image_button"
                         android:background="@null"
                         android:contentDescription="@null"
                         app:srcCompat="@drawable/ic_format_italic"/>
                 <ImageButton
                         android:id="@+id/action_underline"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/editor_image_button"
+                        android:layout_height="@dimen/editor_image_button"
                         android:background="@null"
                         android:contentDescription="@null"
                         app:srcCompat="@drawable/ic_format_underline"/>
-
                 <ImageButton
                         android:id="@+id/action_strikethrough"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/editor_image_button"
+                        android:layout_height="@dimen/editor_image_button"
                         android:background="@null"
                         android:contentDescription="@null"
                         app:srcCompat="@drawable/ic_format_strikethrough"/>
-
                 <ImageButton
                         android:id="@+id/action_blockquote"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/editor_image_button"
+                        android:layout_height="@dimen/editor_image_button"
                         android:background="@null"
                         android:contentDescription="@null"
                         app:srcCompat="@drawable/ic_format_quote"/>
                 <ImageButton
                         android:id="@+id/action_insert_image"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/editor_image_button"
+                        android:layout_height="@dimen/editor_image_button"
                         android:background="@null"
                         android:contentDescription="@null"
                         app:srcCompat="@drawable/ic_insert_photo"/>
-
                 <ImageButton
                         android:id="@+id/action_insert_link"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/editor_image_button"
+                        android:layout_height="@dimen/editor_image_button"
                         android:background="@null"
                         android:contentDescription="@null"
                         app:srcCompat="@drawable/ic_insert_link"/>
@@ -98,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:padding="10dp"
-                android:hint="Title"
+                android:hint="@string/hint_title"
                 android:ems="10"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"

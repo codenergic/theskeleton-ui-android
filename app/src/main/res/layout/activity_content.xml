@@ -19,11 +19,11 @@
                 app:contentInsetLeft="0dp"
                 app:contentInsetStart="0dp"
                 app:contentInsetStartWithNavigation="0dp">
-            <include android:id="@+id/content_header"
-                     layout="@layout/content_header"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-            />
+            <include
+                    android:id="@+id/content_header"
+                    layout="@layout/content_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
@@ -49,8 +49,7 @@
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
-                    android:layout_below="@+id/title"
-            />
+                    android:layout_below="@+id/title"/>
             <LinearLayout
                     android:id="@+id/comment_link"
                     android:layout_width="match_parent"
@@ -59,11 +58,12 @@
                     android:paddingTop="@dimen/activity_horizontal_margin"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
                     android:background="@color/light_grey"
-                    android:weightSum="1" android:layout_below="@+id/content">
+                    android:weightSum="1"
+                    android:layout_below="@+id/content">
                 <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imageView"
-                        android:layout_width="@dimen/cards_button_width"
-                        android:layout_height="@dimen/cards_button_width"
+                        android:layout_width="@dimen/profile_picture_default"
+                        android:layout_height="@dimen/profile_picture_default"
                         android:src="@drawable/raisa"/>
                 <TextView
                         android:layout_width="wrap_content"
@@ -71,14 +71,14 @@
                         android:id="@+id/textView4"
                         android:paddingLeft="@dimen/activity_horizontal_margin"
                         android:gravity="center_vertical"
-                        android:text="Write comment..."
-                />
+                        android:text="@string/hint_write_comment"/>
             </LinearLayout>
             <android.support.v7.widget.RecyclerView
                     android:id="@+id/comments"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/comment_link" android:layout_alignParentStart="true"/>
+                    android:layout_below="@+id/comment_link"
+                    android:layout_alignParentStart="true"/>
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

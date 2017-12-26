@@ -33,11 +33,11 @@ public class ContentActivity extends BaseActivity implements OnItemClickListener
 
     @Override
     public void setup() {
-        title.setText(getString(R.string.title_dummy));
+        title.setText(getString(R.string.dummy_title));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            content.setText(Html.fromHtml(getResources().getString(R.string.content_dummy), Html.FROM_HTML_MODE_COMPACT));
+            content.setText(Html.fromHtml(getResources().getString(R.string.dummy_content), Html.FROM_HTML_MODE_COMPACT));
         } else {
-            content.setText(Html.fromHtml(getResources().getString(R.string.content_dummy)));
+            content.setText(Html.fromHtml(getResources().getString(R.string.dummy_content)));
         }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

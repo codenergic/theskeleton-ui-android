@@ -5,8 +5,8 @@
                 android:layout_height="match_parent">
     <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
-            android:layout_width="@dimen/cards_button_width"
-            android:layout_height="@dimen/cards_button_width"
+            android:layout_width="@dimen/profile_picture_default"
+            android:layout_height="@dimen/profile_picture_default"
             android:src="@drawable/raisa"/>
     <LinearLayout
             android:layout_width="wrap_content"
@@ -15,10 +15,12 @@
             android:layout_alignBottom="@+id/imageView"
             android:id="@+id/linearLayout"
             android:layout_alignParentTop="true"
-            android:paddingLeft="@dimen/title_padding" android:layout_alignParentEnd="true"
+            android:paddingLeft="@dimen/title_padding"
+            android:paddingRight="@dimen/title_padding"
+            android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/imageView">
         <TextView
-                android:text="Raisa Andriani"
+                android:text="@string/dummy_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/textView2"
@@ -28,7 +30,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical|bottom"/>
         <TextView
-                android:text="on Sep 26"
+                android:text="@string/dummy_posting_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|top"

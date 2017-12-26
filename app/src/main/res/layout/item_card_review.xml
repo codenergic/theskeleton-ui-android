@@ -22,30 +22,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginBottom="@dimen/title_padding">
-            <LinearLayout android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:layout_weight="1">
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
                 <TextView
                         android:id="@+id/card_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="@string/item_desc"
+                        tools:text="@string/dummy_content"
                         android:ellipsize="end"
                         android:maxLines="2"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
-                <TextView android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          tools:text="@string/book"
-                          android:maxLines="1"
-                          android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                          android:layout_marginTop="@dimen/title_padding"
-                          android:textStyle="normal|italic"
-                          android:id="@+id/type"
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="@string/content_type_book"
+                        android:maxLines="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:layout_marginTop="@dimen/title_padding"
+                        android:textStyle="normal|italic"
+                        android:id="@+id/type"
                 />
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          tools:text="@string/detail_desc"
+                          tools:text="@string/dummy_content"
                           android:maxLines="2"
                           android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                           android:layout_marginTop="@dimen/title_padding"
@@ -53,17 +55,18 @@
             </LinearLayout>
             <ImageView
                     android:id="@+id/card_image"
-                    android:layout_width="85dp"
-                    android:layout_height="110dp"
+                    android:layout_width="@dimen/item_card_book_width"
+                    android:layout_height="@dimen/item_card_book_height"
                     android:scaleType="center"
                     android:layout_gravity="center"
                     tools:src="@drawable/book"/>
         </LinearLayout>
-        <include android:id="@+id/post_footer"
-                 layout="@layout/post_footer"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@+id/layout_book"/>
+        <include
+                android:id="@+id/post_footer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_book"
+                layout="@layout/post_footer"/>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
