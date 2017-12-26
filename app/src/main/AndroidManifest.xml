@@ -24,6 +24,9 @@
         <activity android:name=".content.ContentActivity"
                   android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".profile.ProfileActivity"/>
+                  android:parentActivityName=".main.MainActivity"/>
+        <activity android:name=".content.CommentActivity"
+                  android:parentActivityName=".content.ContentActivity"/>
     </application>
 
 </manifest>
