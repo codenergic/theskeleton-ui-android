@@ -8,4 +8,5 @@
     <color name="medium_grey">#9E9E9E</color>
     <color name="button_grey">#757575</color>
     <color name="light_grey">#f7f7f7</color>
+    <color name="backdrop_gray">#566771</color>
 </resources>
