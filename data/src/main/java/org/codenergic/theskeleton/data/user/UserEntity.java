@@ -46,7 +46,5 @@ public abstract class UserEntity implements DomainEntity {
                 .password(user.getPassword())
                 .email(user.getEmail());
         }
-
     }
-
 }
