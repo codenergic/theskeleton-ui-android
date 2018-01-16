@@ -1,10 +1,14 @@
 package org.codenergic.theskeleton.base;
 
+import org.codenergic.theskeleton.R;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -15,6 +19,10 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    @Nullable
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     private Unbinder unbinder;
 
     @Override
@@ -23,6 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         findViews();
         setup();
+        setToolbar();
     }
 
     public void findViews() {
@@ -32,16 +41,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    public abstract void setup();
+
+    private void setToolbar() {
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
     }
 
     public abstract int getLayout();
-
-    public abstract void setup();
-
-    public abstract BasePresenter attachPresenter();
 
     @Override
     protected void onDestroy() {
@@ -49,10 +59,29 @@ public abstract class BaseActivity extends AppCompatActivity {
             unbinder.unbind();
         }
 
-        if(attachPresenter() != null) {
+        if (attachPresenter() != null) {
             attachPresenter().onViewDestroy();
         }
 
         super.onDestroy();
+    }
+
+    public abstract BasePresenter attachPresenter();
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    protected void showBackIconToolbar(boolean isEnable) {
+        if (toolbar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(isEnable);
+        }
+    }
+
+    protected void setTitleToolbar(String title) {
+        if (toolbar != null) {
+            getSupportActionBar().setTitle(title);
+        }
     }
 }

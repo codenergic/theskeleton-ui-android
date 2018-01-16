@@ -54,6 +54,10 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
         navigateToLogin();
     }
 
+    private void navigateToLogin() {
+        startActivity(new Intent(this, LoginActivity.class));
+    }
+
     @OnClick(R.id.btn_signup)
     public void onSignUpButtonClick() {
         String username = etUsername.getText().toString();
@@ -61,10 +65,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
         String password = etPassword.getText().toString();
 
         presenter.signUp(username, password, email);
-    }
-
-    private void navigateToLogin() {
-        startActivity(new Intent(this, LoginActivity.class));
     }
 
     @Override
