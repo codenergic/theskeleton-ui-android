@@ -8,6 +8,7 @@ import dagger.Provides;
  */
 @Module
 public class MainModule {
+
     @Provides
     MainContract.View provideMainActivity(MainActivity mainActivity) {
         return mainActivity;

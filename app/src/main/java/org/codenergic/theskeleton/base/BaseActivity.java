@@ -79,6 +79,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    protected void showMenuIconToolbar() {
+        if (toolbar != null) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
     protected void setTitleToolbar(String title) {
         if (toolbar != null) {
             getSupportActionBar().setTitle(title);

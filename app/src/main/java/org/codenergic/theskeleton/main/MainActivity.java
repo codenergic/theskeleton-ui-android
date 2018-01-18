@@ -17,7 +17,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
@@ -32,67 +31,29 @@ import dagger.android.AndroidInjection;
  */
 public class MainActivity extends BaseActivity implements MainContract.View, OnItemClickListener {
 
-    @BindView(R.id.drawer)
-    DrawerLayout drawerLayout;
+    @BindView(R.id.dl_main)
+    DrawerLayout dlMain;
 
-    @BindView(R.id.fab)
-    FloatingActionButton floatingActionButtonView;
+    @BindView(R.id.fab_post)
+    FloatingActionButton fabPost;
 
-    @BindView(R.id.nav_view)
-    NavigationView navigationView;
+    @BindView(R.id.nv_main)
+    NavigationView nvMain;
 
-    @BindView(R.id.card_list)
-    RecyclerView recyclerView;
+    @BindView(R.id.rv_main_posts)
+    RecyclerView rvMainPosts;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    private ContentAdapter contentAdapter;
 
     @Override
     public void setup() {
         AndroidInjection.inject(this);
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(llm);
-
-        ContentAdapter adapter = new ContentAdapter(dummyContent(), this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(
-            recyclerView.getContext(),
-            OrientationHelper.VERTICAL
-        ));
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    floatingActionButtonView.show();
-                }
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0 || dy < 0 && floatingActionButtonView.isShown())
-                    floatingActionButtonView.hide();
-            }
-        });
-
-        navigationView.setNavigationItemSelectedListener((menuItem) -> {
-            menuItem.setChecked(true);
-            drawerLayout.closeDrawers();
-            return true;
-        });
-
-        navigationView.getHeaderView(0)
-            .findViewById(R.id.profileImage)
-            .setOnClickListener((v) ->
-                startActivity(new Intent(this, ProfileActivity.class)
-                ));
+        showMenuIconToolbar();
+        initAdapter();
+        initRecyclerViewLayoutManager();
+        initRecyclerViewScrollListener();
+        setRecyclerViewItemDecoration();
+        setupNavigationView();
     }
 
     @Override
@@ -105,6 +66,55 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
         return null;
     }
 
+    private void initAdapter() {
+        contentAdapter = new ContentAdapter(dummyContent(), this);
+        rvMainPosts.setAdapter(contentAdapter);
+    }
+
+    private void initRecyclerViewLayoutManager() {
+        rvMainPosts.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void initRecyclerViewScrollListener() {
+        rvMainPosts.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    fabPost.show();
+                }
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 || dy < 0 && fabPost.isShown())
+                    fabPost.hide();
+            }
+        });
+    }
+
+    private void setRecyclerViewItemDecoration() {
+        rvMainPosts.addItemDecoration(new DividerItemDecoration(
+            rvMainPosts.getContext(),
+            OrientationHelper.VERTICAL
+        ));
+    }
+
+    private void setupNavigationView() {
+        nvMain.setNavigationItemSelectedListener((menuItem) -> {
+            menuItem.setChecked(true);
+            dlMain.closeDrawers();
+            return true;
+        });
+
+        nvMain.getHeaderView(0)
+            .findViewById(R.id.profileImage)
+            .setOnClickListener((v) ->
+                startActivity(new Intent(this, ProfileActivity.class)
+                ));
+    }
+
+    //TODO remove dummy content
     public static final List<PostModel> dummyContent() {
         List<PostModel> posts = new ArrayList<>();
         posts.add(new PostModel()
@@ -166,7 +176,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
         return posts;
     }
 
-    @OnClick(R.id.fab)
+    @OnClick(R.id.fab_post)
     public void onFabClick() {
         startActivity(new Intent(this, EditorActivity.class));
     }
@@ -175,18 +185,18 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            drawerLayout.openDrawer(GravityCompat.START);
+            dlMain.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void showListLoading() {
+    public void onGotPostsSuccess() {
 
     }
 
     @Override
-    public void hideListLoading() {
+    public void onGotPostsFailed() {
 
     }
 
