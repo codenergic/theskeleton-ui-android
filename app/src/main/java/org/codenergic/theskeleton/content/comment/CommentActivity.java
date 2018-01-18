@@ -1,27 +1,28 @@
-package org.codenergic.theskeleton.content;
+package org.codenergic.theskeleton.content.comment;
 
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
 
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageButton;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import dagger.android.AndroidInjection;
 import jp.wasabeef.richeditor.RichEditor;
 
 /**
  * Created by diasa on 12/24/17.
  */
-public class CommentActivity extends BaseActivity {
+public class CommentActivity extends BaseActivity implements CommentContract.View {
 
     @BindView(R.id.editor)
     RichEditor editor;
 
     @Override
     public void setup() {
+        AndroidInjection.inject(this);
         showBackIconToolbar(true);
         setTitleToolbar(null);
         editor.setPadding(20, 20, 20, 20);

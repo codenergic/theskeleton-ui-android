@@ -25,7 +25,7 @@
                   android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".profile.ProfileActivity"/>
                   android:parentActivityName=".main.MainActivity"/>
-        <activity android:name=".content.CommentActivity"
+        <activity android:name=".content.comment.CommentActivity"
                   android:parentActivityName=".content.ContentActivity"/>
     </application>
 

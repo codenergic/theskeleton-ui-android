@@ -1,4 +1,4 @@
-package org.codenergic.theskeleton.profile;
+package org.codenergic.theskeleton.content.post;
 
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.content.ContentActivity;

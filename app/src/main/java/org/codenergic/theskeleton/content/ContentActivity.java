@@ -3,6 +3,8 @@ package org.codenergic.theskeleton.content;
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.content.comment.CommentActivity;
+import org.codenergic.theskeleton.content.comment.CommentAdapter;
 import org.codenergic.theskeleton.main.MainActivity;
 
 import android.content.Intent;
@@ -16,11 +18,13 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import dagger.android.AndroidInjection;
 
 /**
  * Created by diasa on 12/9/17.
  */
-public class ContentActivity extends BaseActivity implements OnItemClickListener {
+public class ContentActivity extends BaseActivity implements ContentContract.View,
+    OnItemClickListener {
 
     @BindView(R.id.content)
     TextView content;
@@ -33,6 +37,7 @@ public class ContentActivity extends BaseActivity implements OnItemClickListener
 
     @Override
     public void setup() {
+        AndroidInjection.inject(this);
         title.setText(getString(R.string.dummy_title));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             content.setText(Html.fromHtml(getResources().getString(R.string.dummy_content),

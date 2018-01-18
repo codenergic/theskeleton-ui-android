@@ -9,18 +9,20 @@ import android.widget.ImageButton;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import dagger.android.AndroidInjection;
 import jp.wasabeef.richeditor.RichEditor;
 
 /**
  * Created by diasa on 11/26/17.
  */
-public class EditorActivity extends BaseActivity {
+public class EditorActivity extends BaseActivity implements EditorContract.View {
 
     @BindView(R.id.editor)
     RichEditor editor;
 
     @Override
     public void setup() {
+        AndroidInjection.inject(this);
         editor.setPadding(10, 10, 10, 10);
         editor.setPlaceholder("Tell your story...");
     }

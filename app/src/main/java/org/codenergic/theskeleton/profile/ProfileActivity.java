@@ -3,6 +3,7 @@ package org.codenergic.theskeleton.profile;
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.content.post.PostFragment;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
@@ -14,11 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 
 import butterknife.BindView;
+import dagger.android.AndroidInjection;
 
 /**
  * Created by diasa on 12/14/17.
  */
-public class ProfileActivity extends BaseActivity implements AppBarLayout.OnOffsetChangedListener {
+public class ProfileActivity extends BaseActivity implements ProfileContract.View,
+    AppBarLayout.OnOffsetChangedListener {
 
     private static final int PERCENTAGE_TO_ANIMATE_AVATAR = 20;
 
@@ -43,6 +46,7 @@ public class ProfileActivity extends BaseActivity implements AppBarLayout.OnOffs
 
     @Override
     public void setup() {
+        AndroidInjection.inject(this);
         toolbar.setNavigationOnClickListener((v) -> onBackPressed());
         appBarLayout.addOnOffsetChangedListener(this);
         mMaxScrollSize = appBarLayout.getTotalScrollRange();
