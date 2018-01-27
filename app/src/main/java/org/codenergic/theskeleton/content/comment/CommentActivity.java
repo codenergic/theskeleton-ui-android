@@ -1,4 +1,4 @@
-package org.codenergic.theskeleton.editor;
+package org.codenergic.theskeleton.content.comment;
 
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
@@ -13,9 +13,9 @@ import dagger.android.AndroidInjection;
 import jp.wasabeef.richeditor.RichEditor;
 
 /**
- * Created by diasa on 11/26/17.
+ * Created by diasa on 12/24/17.
  */
-public class EditorActivity extends BaseActivity implements EditorContract.View {
+public class CommentActivity extends BaseActivity implements CommentContract.View {
 
     @BindView(R.id.editor)
     RichEditor editor;
@@ -23,18 +23,26 @@ public class EditorActivity extends BaseActivity implements EditorContract.View 
     @Override
     public void setup() {
         AndroidInjection.inject(this);
-        editor.setPadding(10, 10, 10, 10);
-        editor.setPlaceholder("Tell your story...");
+        showBackIconToolbar(true);
+        setTitleToolbar(null);
+        editor.setPadding(20, 20, 20, 20);
+        editor.setPlaceholder("Write a comment...");
     }
 
     @Override
     public int getLayout() {
-        return R.layout.activity_editor;
+        return R.layout.activity_comment;
     }
 
     @Override
     public BasePresenter attachPresenter() {
         return null;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.editor, menu);
+        return true;
     }
 
     @OnClick({R.id.action_bold, R.id.action_italic, R.id.action_strikethrough,
@@ -57,11 +65,5 @@ public class EditorActivity extends BaseActivity implements EditorContract.View 
                 editor.setBlockquote();
                 break;
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.editor, menu);
-        return true;
     }
 }

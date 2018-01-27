@@ -1,4 +1,4 @@
-package org.codenergic.theskeleton.content;
+package org.codenergic.theskeleton.content.comment;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import org.codenergic.theskeleton.R;
+import org.codenergic.theskeleton.content.OnItemClickListener;
 import org.codenergic.theskeleton.model.PostModel;
 
 import java.util.List;

@@ -1,4 +1,10 @@
-package org.codenergic.theskeleton.profile;
+package org.codenergic.theskeleton.content.post;
+
+import org.codenergic.theskeleton.R;
+import org.codenergic.theskeleton.content.ContentActivity;
+import org.codenergic.theskeleton.main.ContentAdapter;
+import org.codenergic.theskeleton.main.MainActivity;
+import org.codenergic.theskeleton.main.OnItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +17,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import org.codenergic.theskeleton.R;
-import org.codenergic.theskeleton.content.ContentActivity;
-import org.codenergic.theskeleton.main.ContentAdapter;
-import org.codenergic.theskeleton.main.MainActivity;
-import org.codenergic.theskeleton.main.OnItemClickListener;
 
 /**
  * Created by diasa on 12/24/17.
@@ -24,8 +25,13 @@ public class PostFragment extends Fragment implements OnItemClickListener {
 
     private RecyclerView rootView;
 
+    public static Fragment newInstance() {
+        return new PostFragment();
+    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        Bundle savedInstanceState) {
         rootView = (RecyclerView) inflater.inflate(R.layout.fragment_post, container, false);
         return rootView;
     }
@@ -44,13 +50,9 @@ public class PostFragment extends Fragment implements OnItemClickListener {
         ContentAdapter adapter = new ContentAdapter(MainActivity.dummyContent(), this);
         rootView.setAdapter(adapter);
         rootView.addItemDecoration(new DividerItemDecoration(
-                rootView.getContext(),
-                OrientationHelper.VERTICAL
+            rootView.getContext(),
+            OrientationHelper.VERTICAL
         ));
-    }
-
-    public static Fragment newInstance() {
-        return new PostFragment();
     }
 
     public void onItemClick(int position) {
