@@ -1,6 +1,11 @@
 package org.codenergic.theskeleton.main;
 
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.domain.DefaultSubscriber;
+import org.codenergic.theskeleton.domain.post.Post;
+import org.codenergic.theskeleton.domain.post.interactor.GetPosts;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -9,14 +14,29 @@ import javax.inject.Inject;
  */
 public class MainPresenter extends BasePresenter implements MainContract.Presenter {
 
-    @Inject
-    public MainPresenter() {
+    private final GetPosts getPosts;
 
+    private final MainContract.View view;
+
+    @Inject
+    public MainPresenter(GetPosts getPosts, MainContract.View view) {
+        this.getPosts = getPosts;
+        this.view = view;
     }
 
     @Override
-    public void getPosts() {
+    public void getPosts(int page, int size) {
+        getPosts.execute(new DefaultSubscriber<List<Post>>() {
+            @Override
+            public void onNext(List<Post> posts) {
+                view.onGotPostsSuccess(posts);
+            }
 
+            @Override
+            public void onError(Throwable t) {
+                view.onGotPostsFailed();
+            }
+        }, new GetPosts.Params(page, size));
     }
 
     @Override

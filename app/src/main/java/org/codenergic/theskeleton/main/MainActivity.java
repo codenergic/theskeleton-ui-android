@@ -4,6 +4,7 @@ import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.content.ContentActivity;
+import org.codenergic.theskeleton.domain.post.Post;
 import org.codenergic.theskeleton.editor.EditorActivity;
 import org.codenergic.theskeleton.model.PostModel;
 import org.codenergic.theskeleton.profile.ProfileActivity;
@@ -17,10 +18,13 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -30,6 +34,9 @@ import dagger.android.AndroidInjection;
  * Created by diasa on 10/23/17.
  */
 public class MainActivity extends BaseActivity implements MainContract.View, OnItemClickListener {
+
+    @Inject
+    MainPresenter presenter;
 
     @BindView(R.id.dl_main)
     DrawerLayout dlMain;
@@ -54,6 +61,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
         initRecyclerViewScrollListener();
         setRecyclerViewItemDecoration();
         setupNavigationView();
+
+        presenter.getPosts(0, 10);
     }
 
     @Override
@@ -191,8 +200,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
     }
 
     @Override
-    public void onGotPostsSuccess() {
-
+    public void onGotPostsSuccess(List<Post> posts) {
+        Log.wtf(MainActivity.class.getName(), posts.size() + "");
     }
 
     @Override

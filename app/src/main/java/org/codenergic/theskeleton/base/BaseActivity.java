@@ -30,8 +30,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         findViews();
-        setup();
         setToolbar();
+        setup();
     }
 
     public void findViews() {
