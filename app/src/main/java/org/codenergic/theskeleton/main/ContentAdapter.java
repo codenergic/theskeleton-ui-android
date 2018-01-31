@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,10 +20,9 @@ public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private OnItemClickListener onItemClickListener;
 
-    private List<PostModel> post;
+    private List<PostModel> posts = new ArrayList<>();
 
-    public ContentAdapter(List<PostModel> posts, OnItemClickListener onItemClickListener) {
-        this.post = posts;
+    public ContentAdapter(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
@@ -43,22 +43,27 @@ public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (holder.getItemViewType()) {
             case 0:
-                ((ViewHolderPost) holder).bindData(post.get(position), position);
+                ((ViewHolderPost) holder).bindData(posts.get(position), position);
                 break;
             case 1:
-                ((ViewHolderReview) holder).bindData(post.get(position), position);
+                ((ViewHolderReview) holder).bindData(posts.get(position), position);
                 break;
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        return post.get(position).getType();
+        return posts.get(position).getType();
     }
 
     @Override
     public int getItemCount() {
-        return post.size();
+        return posts.size();
+    }
+
+    public void updateContent(List<PostModel> posts) {
+        this.posts.clear();
+        this.posts.addAll(posts);
     }
 
     public static class ViewHolderPost extends RecyclerView.ViewHolder {
@@ -114,6 +119,4 @@ public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
         }
     }
-
-
 }

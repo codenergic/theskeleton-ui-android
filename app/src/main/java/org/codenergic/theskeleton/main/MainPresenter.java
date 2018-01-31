@@ -4,7 +4,9 @@ import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.domain.DefaultSubscriber;
 import org.codenergic.theskeleton.domain.post.Post;
 import org.codenergic.theskeleton.domain.post.interactor.GetPosts;
+import org.codenergic.theskeleton.model.PostModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,7 +31,14 @@ public class MainPresenter extends BasePresenter implements MainContract.Present
         getPosts.execute(new DefaultSubscriber<List<Post>>() {
             @Override
             public void onNext(List<Post> posts) {
-                view.onGotPostsSuccess(posts);
+                List<PostModel> postModels = new ArrayList<>();
+                for (Post a : posts) {
+                    postModels.add(new PostModel()
+                        .setTitle(a.getTitle())
+                        .setShortContent(a.getContent())
+                    );
+                }
+                view.onGotPostsSuccess(postModels);
             }
 
             @Override

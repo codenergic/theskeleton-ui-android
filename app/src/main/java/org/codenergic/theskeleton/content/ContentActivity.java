@@ -16,6 +16,8 @@ import android.text.Html;
 import android.view.Menu;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import dagger.android.AndroidInjection;
@@ -50,7 +52,7 @@ public class ContentActivity extends BaseActivity implements ContentContract.Vie
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        CommentAdapter adapter = new CommentAdapter(MainActivity.dummyContent(), this);
+        CommentAdapter adapter = new CommentAdapter(new ArrayList<>(), this);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(
             recyclerView.getContext(),

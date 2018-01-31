@@ -17,7 +17,10 @@
             android:id="@+id/rv_main_posts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"/>
+            android:layout_below="@+id/toolbar"
+            android:paddingBottom="@dimen/title_padding"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_post"

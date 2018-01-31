@@ -1,6 +1,7 @@
 package org.codenergic.theskeleton.main;
 
 import org.codenergic.theskeleton.domain.post.Post;
+import org.codenergic.theskeleton.model.PostModel;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface MainContract {
     interface View {
 
         //TODO change to auto value mapper
-        void onGotPostsSuccess(List<Post> posts);
+        void onGotPostsSuccess(List<PostModel> posts);
 
         void onGotPostsFailed();
     }

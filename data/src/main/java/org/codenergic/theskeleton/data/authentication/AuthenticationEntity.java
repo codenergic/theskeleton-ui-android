@@ -16,16 +16,20 @@ import android.support.annotation.Keep;
 @JsonDeserialize(builder = AutoValue_AuthenticationEntity.Builder.class)
 public abstract class AuthenticationEntity implements DomainEntity {
 
+    @JsonProperty("access_token")
     public abstract String getAccessToken();
 
+    @JsonProperty("expires_in")
     public abstract long getExpiresIn();
 
     public abstract String getJti();
 
+    @JsonProperty("refresh_token")
     public abstract String getRefreshToken();
 
     public abstract String getScope();
 
+    @JsonProperty("token_type")
     public abstract String getTokenType();
 
     public static Builder builder() {

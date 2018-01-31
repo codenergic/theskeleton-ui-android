@@ -18,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 /**
  * Created by diasa on 12/24/17.
  */
@@ -47,7 +49,7 @@ public class PostFragment extends Fragment implements OnItemClickListener {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rootView.setLayoutManager(llm);
 
-        ContentAdapter adapter = new ContentAdapter(MainActivity.dummyContent(), this);
+        ContentAdapter adapter = new ContentAdapter(this);
         rootView.setAdapter(adapter);
         rootView.addItemDecoration(new DividerItemDecoration(
             rootView.getContext(),

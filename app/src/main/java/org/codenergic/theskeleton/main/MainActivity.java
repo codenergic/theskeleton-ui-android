@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
     }
 
     private void initAdapter() {
-        contentAdapter = new ContentAdapter(dummyContent(), this);
+        contentAdapter = new ContentAdapter(this);
         rvMainPosts.setAdapter(contentAdapter);
     }
 
@@ -123,68 +123,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
                 ));
     }
 
-    //TODO remove dummy content
-    public static final List<PostModel> dummyContent() {
-        List<PostModel> posts = new ArrayList<>();
-        posts.add(new PostModel()
-            .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
-            .setShortContent(
-                "Kecelakaan yang terjadi di KM 12 Tol Cikampek arah Cawang ini menyebabkan macet " +
-                    "sekitar 1 km.")
-            .setType(0)
-        );
-        posts.add(new PostModel()
-            .setTitle("CCTV Jadi Andalan Ibu untuk Pantau Kondisi Anak saat Bekerja")
-            .setShortContent(
-                "CCTV tersambung dengan gadget, ibu bisa mengecek apakah si sudah minum susu atau" +
-                    " belum. Kapan saja, di mana saja.")
-            .setType(1)
-        );
-        posts.add(new PostModel()
-            .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
-            .setShortContent(
-                "Kecelakaan yang terjadi di KM 12 Tol Cikampek arah Cawang ini menyebabkan macet " +
-                    "sekitar 1 km.")
-            .setType(0)
-        );
-        posts.add(new PostModel()
-            .setTitle("CCTV Jadi Andalan Ibu untuk Pantau Kondisi Anak saat Bekerja")
-            .setShortContent(
-                "CCTV tersambung dengan gadget, ibu bisa mengecek apakah si sudah minum susu atau" +
-                    " belum. Kapan saja, di mana saja.")
-            .setType(1)
-        );
-        posts.add(new PostModel()
-            .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
-            .setShortContent(
-                "Kecelakaan yang terjadi di KM 12 Tol Cikampek arah Cawang ini menyebabkan macet " +
-                    "sekitar 1 km.")
-            .setType(0)
-        );
-        posts.add(new PostModel()
-            .setTitle("CCTV Jadi Andalan Ibu untuk Pantau Kondisi Anak saat Bekerja")
-            .setShortContent(
-                "CCTV tersambung dengan gadget, ibu bisa mengecek apakah si sudah minum susu atau" +
-                    " belum. Kapan saja, di mana saja.")
-            .setType(1)
-        );
-        posts.add(new PostModel()
-            .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
-            .setShortContent(
-                "Kecelakaan yang terjadi di KM 12 Tol Cikampek arah Cawang ini menyebabkan macet " +
-                    "sekitar 1 km.")
-            .setType(0)
-        );
-        posts.add(new PostModel()
-            .setTitle("CCTV Jadi Andalan Ibu untuk Pantau Kondisi Anak saat Bekerja")
-            .setShortContent(
-                "CCTV tersambung dengan gadget, ibu bisa mengecek apakah si sudah minum susu atau" +
-                    " belum. Kapan saja, di mana saja.")
-            .setType(1)
-        );
-        return posts;
-    }
-
     @OnClick(R.id.fab_post)
     public void onFabClick() {
         startActivity(new Intent(this, EditorActivity.class));
@@ -200,8 +138,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
     }
 
     @Override
-    public void onGotPostsSuccess(List<Post> posts) {
-        Log.wtf(MainActivity.class.getName(), posts.size() + "");
+    public void onGotPostsSuccess(List<PostModel> posts) {
+        contentAdapter.updateContent(posts);
+        contentAdapter.notifyDataSetChanged();
     }
 
     @Override
