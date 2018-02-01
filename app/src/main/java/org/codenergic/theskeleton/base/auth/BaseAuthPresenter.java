@@ -4,7 +4,6 @@ import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.domain.DefaultSubscriber;
 import org.codenergic.theskeleton.domain.user.User;
 import org.codenergic.theskeleton.domain.user.interactor.GetCurrentUser;
-import org.codenergic.theskeleton.domain.user.interactor.GetUserProfile;
 import org.codenergic.theskeleton.model.UserModel;
 
 import javax.inject.Inject;
@@ -33,7 +32,8 @@ public class BaseAuthPresenter extends BasePresenter implements
         getCurrentUser.execute(new DefaultSubscriber<User>() {
             @Override
             public void onNext(User user) {
-                if (user != null) {
+                //TODO need to change with proper checking
+                if (user.getEmail() != null) {
                     view.onAuthorized(new UserModel());
                 } else {
                     view.onUnauthorized();

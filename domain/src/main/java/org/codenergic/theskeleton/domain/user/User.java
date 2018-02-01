@@ -12,6 +12,9 @@ public class User {
 
     private String username;
 
+    public User() {
+    }
+
     public User(String username, String password, String email, String phoneNumber,
         String pictureUrl) {
         this.username = username;

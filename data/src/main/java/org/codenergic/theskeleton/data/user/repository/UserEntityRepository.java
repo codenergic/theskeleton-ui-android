@@ -41,6 +41,8 @@ public class UserEntityRepository implements UserRepository {
 
     @Override
     public Flowable<User> getCurrentUser() {
-        return Flowable.just(userPreferences.getUser().toUser());
+        UserEntity currentUser = userPreferences.getUser();
+        return Flowable
+            .just(currentUser == null ? new User() : currentUser.toUser());
     }
 }

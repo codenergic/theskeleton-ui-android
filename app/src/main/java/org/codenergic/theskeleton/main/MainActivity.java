@@ -63,8 +63,6 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
         initRecyclerViewScrollListener();
         setRecyclerViewItemDecoration();
         setupNavigationView();
-
-        presenter.getPosts(0, 10);
     }
 
     @Override
@@ -157,6 +155,6 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
 
     @Override
     public void onAuthorized(UserModel userModel) {
-
+        presenter.getPosts(0, 10);
     }
 }
