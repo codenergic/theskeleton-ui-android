@@ -1,11 +1,17 @@
 package org.codenergic.theskeleton.domain.authentication;
 
 public class Authentication {
+
     private String accessToken;
+
     private long expiresIn;
+
     private String jti;
+
     private String refreshToken;
+
     private String scope;
+
     private String tokenType;
 
     public Authentication(String accessToken, long expiresIn, String jti, String refreshToken,

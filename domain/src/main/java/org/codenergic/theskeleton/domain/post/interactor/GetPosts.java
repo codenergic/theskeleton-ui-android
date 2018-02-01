@@ -1,7 +1,6 @@
 package org.codenergic.theskeleton.domain.post.interactor;
 
 import org.codenergic.theskeleton.domain.UseCase;
-import org.codenergic.theskeleton.domain.authentication.repository.AuthenticationRepository;
 import org.codenergic.theskeleton.domain.post.Post;
 import org.codenergic.theskeleton.domain.post.repository.PostRepository;
 

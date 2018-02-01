@@ -9,4 +9,6 @@ public interface UserData {
 
     Flowable<UserEntity> signUp(SignUpRequest signUpRequest);
 
+    Flowable<UserEntity> getUserProfile();
+
 }

@@ -3,10 +3,12 @@ package org.codenergic.theskeleton.main;
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
 import org.codenergic.theskeleton.content.ContentActivity;
 import org.codenergic.theskeleton.domain.post.Post;
 import org.codenergic.theskeleton.editor.EditorActivity;
 import org.codenergic.theskeleton.model.PostModel;
+import org.codenergic.theskeleton.model.UserModel;
 import org.codenergic.theskeleton.profile.ProfileActivity;
 
 import android.content.Intent;
@@ -33,7 +35,7 @@ import dagger.android.AndroidInjection;
 /**
  * Created by diasa on 10/23/17.
  */
-public class MainActivity extends BaseActivity implements MainContract.View, OnItemClickListener {
+public class MainActivity extends BaseAuthActivity implements MainContract.View, OnItemClickListener {
 
     @Inject
     MainPresenter presenter;
@@ -151,5 +153,10 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
     @Override
     public void onItemClick(int position) {
         startActivity(new Intent(this, ContentActivity.class));
+    }
+
+    @Override
+    public void onAuthorized(UserModel userModel) {
+
     }
 }

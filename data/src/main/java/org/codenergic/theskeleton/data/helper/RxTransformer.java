@@ -1,8 +1,5 @@
 package org.codenergic.theskeleton.data.helper;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

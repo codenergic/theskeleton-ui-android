@@ -4,9 +4,12 @@ package org.codenergic.theskeleton.domain.post;
  * Created by diasa on 10/24/17.
  */
 public class Post {
-    private String id;
-    private String title;
+
     private String content;
+
+    private String id;
+
+    private String title;
 
     public String getId() {
         return id;
