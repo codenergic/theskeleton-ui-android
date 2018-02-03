@@ -1,11 +1,9 @@
 package org.codenergic.theskeleton.main;
 
 import org.codenergic.theskeleton.R;
-import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
 import org.codenergic.theskeleton.content.ContentActivity;
-import org.codenergic.theskeleton.domain.post.Post;
 import org.codenergic.theskeleton.editor.EditorActivity;
 import org.codenergic.theskeleton.model.PostModel;
 import org.codenergic.theskeleton.model.UserModel;
@@ -20,7 +18,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
@@ -35,12 +32,11 @@ import dagger.android.AndroidInjection;
 /**
  * Created by diasa on 10/23/17.
  */
-public class MainActivity extends BaseAuthActivity implements MainContract.View, OnItemClickListener {
-
-    @Inject
-    MainPresenter presenter;
+public class MainActivity extends BaseAuthActivity implements MainContract.View,
+    OnItemClickListener {
 
     @BindView(R.id.dl_main)
+
     DrawerLayout dlMain;
 
     @BindView(R.id.fab_post)
@@ -49,10 +45,15 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
     @BindView(R.id.nv_main)
     NavigationView nvMain;
 
+    @Inject
+    MainPresenter presenter;
+
     @BindView(R.id.rv_main_posts)
     RecyclerView rvMainPosts;
 
     private ContentAdapter contentAdapter;
+
+    private List<PostModel> posts;
 
     @Override
     public void setup() {
@@ -72,11 +73,12 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
 
     @Override
     public BasePresenter attachPresenter() {
-        return null;
+        return presenter;
     }
 
     private void initAdapter() {
-        contentAdapter = new ContentAdapter(this);
+        posts = new ArrayList<>();
+        contentAdapter = new ContentAdapter(posts, this);
         rvMainPosts.setAdapter(contentAdapter);
     }
 
@@ -139,13 +141,13 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
 
     @Override
     public void onGotPostsSuccess(List<PostModel> posts) {
-        contentAdapter.updateContent(posts);
+        this.posts = posts;
         contentAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onGotPostsFailed() {
-
+        alertHelper.showWarningAlert(this, "Failed to load post");
     }
 
     @Override

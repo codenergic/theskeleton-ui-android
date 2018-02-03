@@ -49,7 +49,7 @@ public class PostFragment extends Fragment implements OnItemClickListener {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rootView.setLayoutManager(llm);
 
-        ContentAdapter adapter = new ContentAdapter(this);
+        ContentAdapter adapter = new ContentAdapter(new ArrayList<>(),this);
         rootView.setAdapter(adapter);
         rootView.addItemDecoration(new DividerItemDecoration(
             rootView.getContext(),
