@@ -2,6 +2,7 @@ package org.codenergic.theskeleton.content.comment;
 
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
+import org.codenergic.theskeleton.base.BaseEditorActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
 
 import android.view.Menu;
@@ -15,7 +16,7 @@ import jp.wasabeef.richeditor.RichEditor;
 /**
  * Created by diasa on 12/24/17.
  */
-public class CommentActivity extends BaseActivity implements CommentContract.View {
+public class CommentActivity extends BaseEditorActivity implements CommentContract.View {
 
     @BindView(R.id.editor)
     RichEditor editor;
@@ -27,6 +28,7 @@ public class CommentActivity extends BaseActivity implements CommentContract.Vie
         setTitleToolbar(null);
         editor.setPadding(20, 20, 20, 20);
         editor.setPlaceholder("Write a comment...");
+        setRichEditor(editor);
     }
 
     @Override
@@ -45,25 +47,4 @@ public class CommentActivity extends BaseActivity implements CommentContract.Vie
         return true;
     }
 
-    @OnClick({R.id.action_bold, R.id.action_italic, R.id.action_strikethrough,
-        R.id.action_underline, R.id.action_blockquote})
-    public void onEditorActionClick(ImageButton imageButton) {
-        switch (imageButton.getId()) {
-            case R.id.action_bold:
-                editor.setBold();
-                break;
-            case R.id.action_italic:
-                editor.setItalic();
-                break;
-            case R.id.action_strikethrough:
-                editor.setStrikeThrough();
-                break;
-            case R.id.action_underline:
-                editor.setUnderline();
-                break;
-            case R.id.action_blockquote:
-                editor.setBlockquote();
-                break;
-        }
-    }
 }
