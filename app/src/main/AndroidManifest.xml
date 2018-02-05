@@ -21,6 +21,7 @@
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".editor.EditorActivity"/>
+            android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".content.ContentActivity"
             android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".profile.ProfileActivity"/>

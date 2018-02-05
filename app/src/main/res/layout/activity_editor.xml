@@ -18,11 +18,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <jp.wasabeef.richeditor.RichEditor
-                android:id="@+id/editor"
+                android:id="@+id/input_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/horizontalScrollView"
-                android:layout_below="@+id/editText3"/>
+                android:layout_below="@+id/input_title"/>
         <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 android:ems="10"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:id="@+id/editText3"
+                android:id="@+id/input_title"
                 android:layout_alignParentEnd="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:background="@android:color/transparent"/>

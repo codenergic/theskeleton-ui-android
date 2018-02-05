@@ -2,6 +2,7 @@ package org.codenergic.theskeleton.data.post.repository;
 
 import org.codenergic.theskeleton.data.post.PostEntity;
 import org.codenergic.theskeleton.data.post.repository.source.PostDataFactory;
+import org.codenergic.theskeleton.data.post.repository.source.request.CreatePostRequest;
 import org.codenergic.theskeleton.domain.post.Post;
 import org.codenergic.theskeleton.domain.post.repository.PostRepository;
 
@@ -34,5 +35,12 @@ public class PostEntityRepository implements PostRepository {
                 }
                 return posts;
             });
+    }
+
+    @Override
+    public Flowable<Post> createPost(String title, String content) {
+        CreatePostRequest createPostRequest = new CreatePostRequest(title, content);
+        return postDataFactory.createData().createPost(createPostRequest)
+            .map(PostEntity::toPost);
     }
 }

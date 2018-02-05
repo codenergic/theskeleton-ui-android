@@ -12,4 +12,6 @@ import io.reactivex.Flowable;
 public interface PostRepository {
 
     Flowable<List<Post>> getPost(int page, int size);
+
+    Flowable<Post> createPost(String title, String content);
 }

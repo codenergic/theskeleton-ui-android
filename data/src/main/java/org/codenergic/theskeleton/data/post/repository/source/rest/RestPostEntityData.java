@@ -3,6 +3,7 @@ package org.codenergic.theskeleton.data.post.repository.source.rest;
 import org.codenergic.theskeleton.data.helper.RxTransformer;
 import org.codenergic.theskeleton.data.post.PostEntity;
 import org.codenergic.theskeleton.data.post.repository.source.PostData;
+import org.codenergic.theskeleton.data.post.repository.source.request.CreatePostRequest;
 import org.codenergic.theskeleton.data.response.RetrofitResponse;
 
 import java.util.List;
@@ -28,6 +29,12 @@ public class RestPostEntityData implements PostData {
     @Override
     public Flowable<RetrofitResponse<List<PostEntity>>> getPosts(int page, int size) {
         return postApi.getPosts(page, size)
+            .compose(RxTransformer.applyThreadTransformer());
+    }
+
+    @Override
+    public Flowable<PostEntity> createPost(CreatePostRequest createPostRequest) {
+        return postApi.createPost(createPostRequest)
             .compose(RxTransformer.applyThreadTransformer());
     }
 }
