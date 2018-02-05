@@ -8,7 +8,6 @@ import org.codenergic.theskeleton.model.PostModel;
 
 import android.app.ProgressDialog;
 import android.support.v4.app.NavUtils;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -66,11 +65,8 @@ public class EditorActivity extends BaseEditorActivity implements EditorContract
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (!TextUtils.isEmpty(etTitle.getText()) && !TextUtils
-                    .isEmpty(edContent.getHtml())) {
-                    showProgress();
-                    presenter.createPost(etTitle.getText().toString(), edContent.getHtml());
-                }
+                showProgress();
+                presenter.createPost(etTitle.getText().toString(), edContent.getHtml());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
