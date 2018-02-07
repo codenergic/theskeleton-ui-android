@@ -1,14 +1,13 @@
-package org.codenergic.theskeleton.main;
+package org.codenergic.theskeleton.main.fragment;
 
-import org.codenergic.theskeleton.domain.post.Post;
 import org.codenergic.theskeleton.model.PostModel;
 
 import java.util.List;
 
 /**
- * Created by diasa on 10/23/17.
+ * Created by diasa on 2/7/18.
  */
-public interface MainContract {
+public class MainFragmentContract {
 
     interface View {
 

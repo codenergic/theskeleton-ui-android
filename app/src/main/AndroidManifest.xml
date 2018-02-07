@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".login.LoginActivity">
-            <intent-filter>
+            <intent-filter>3
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -28,6 +28,8 @@
         android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".content.comment.CommentActivity"
             android:parentActivityName=".content.ContentActivity"/>
+        <activity android:name=".draft.DraftActivity"
+            android:parentActivityName=".main.MainActivity"/>
     </application>
 
 </manifest>
