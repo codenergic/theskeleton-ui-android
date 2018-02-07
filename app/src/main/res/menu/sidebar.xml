@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/first_menu"
            android:checkableBehavior="single">
-        <item android:id="@+id/navigation_item_attachment"
+        <item android:id="@+id/navigation_item_bookmarks"
               android:title="Bookmarks"/>
-        <item android:id="@+id/navigation_item_images"
+        <item android:id="@+id/navigation_item_draft"
               android:title="Drafts"/>
     </group>
 
