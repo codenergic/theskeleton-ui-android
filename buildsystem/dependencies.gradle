@@ -28,6 +28,7 @@ ext {
     saripaar = '2.0.3'
     smartTabLayout = '1.6.1@aar'
     richeditor = '1.2.2'
+    alerter = '2.0.4'
 
     // RX
     rxAndroid = '2.0.1'
@@ -85,7 +86,8 @@ ext {
             circleIndicator    : "me.relex:circleindicator:$circleIndicator",
             materialTypeFace   : "com.mikepenz:google-material-typeface:$materialTypeFace",
             crouton            : "de.keyboardsurfer.android.widget:crouton:$crouton",
-            autoScrollViewPager: "cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:$autoScrollViewPager"
+            autoScrollViewPager: "cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:$autoScrollViewPager",
+            alerter            : "com.tapadoo.android:alerter:$alerter"
     ]
 
     def rxLibs = [
@@ -154,6 +156,7 @@ ext {
             [configuration: "compile", dependency: uiLibs.autoScrollViewPager, options: {
                 exclude group: 'com.google.android', module: 'support-v4'
             }],
+            [configuration: "compile", dependency: uiLibs.alerter],
 
             [configuration: "compile", dependency: rxLibs.rxJava],
             [configuration: "compile", dependency: rxLibs.rxAndroid],

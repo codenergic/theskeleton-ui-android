@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by diasa on 11/8/17.
  */
@@ -19,10 +22,10 @@ public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private OnItemClickListener onItemClickListener;
 
-    private List<PostModel> post;
+    private List<PostModel> posts;
 
     public ContentAdapter(List<PostModel> posts, OnItemClickListener onItemClickListener) {
-        this.post = posts;
+        this.posts = posts;
         this.onItemClickListener = onItemClickListener;
     }
 
@@ -43,77 +46,77 @@ public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (holder.getItemViewType()) {
             case 0:
-                ((ViewHolderPost) holder).bindData(post.get(position), position);
+                ((ViewHolderPost) holder).bindData(posts.get(position), position);
                 break;
             case 1:
-                ((ViewHolderReview) holder).bindData(post.get(position), position);
+                ((ViewHolderReview) holder).bindData(posts.get(position), position);
                 break;
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        return post.get(position).getType();
+        return posts.get(position).getType();
     }
 
     @Override
     public int getItemCount() {
-        return post.size();
+        return posts.size();
     }
 
     public static class ViewHolderPost extends RecyclerView.ViewHolder {
 
-        public ImageView picture;
+        @BindView(R.id.iv_post)
+        public ImageView ivPost;
 
-        public TextView title;
+        @BindView(R.id.tv_title)
+        public TextView tvTitle;
 
         private OnItemClickListener onItemClickListener;
 
         public ViewHolderPost(View itemView, ViewGroup parent,
             OnItemClickListener onItemClickListener) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
             this.onItemClickListener = onItemClickListener;
-            picture = (ImageView) itemView.findViewById(R.id.card_image);
-            title = (TextView) itemView.findViewById(R.id.card_title);
         }
 
         public void bindData(PostModel postModel, int position) {
-            title.setText(postModel.getTitle());
-            picture.setImageResource(R.drawable.post);
+            tvTitle.setText(postModel.getTitle());
+            ivPost.setImageResource(R.drawable.post);
             itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
         }
     }
 
     public static class ViewHolderReview extends RecyclerView.ViewHolder {
 
-        public TextView content;
+        @BindView(R.id.iv_post)
+        public ImageView ivPost;
 
-        public ImageView picture;
+        @BindView(R.id.tv_content)
+        public TextView tvContent;
 
-        public TextView title;
+        @BindView(R.id.tv_title)
+        public TextView tvTitle;
 
-        public TextView type;
+        @BindView(R.id.tv_type)
+        public TextView tvType;
 
         private OnItemClickListener onItemClickListener;
 
         public ViewHolderReview(View itemView, ViewGroup parent,
             OnItemClickListener onItemClickListener) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
             this.onItemClickListener = onItemClickListener;
-            picture = (ImageView) itemView.findViewById(R.id.card_image);
-            title = (TextView) itemView.findViewById(R.id.card_title);
-            content = (TextView) itemView.findViewById(R.id.card_content);
-            type = (TextView) itemView.findViewById(R.id.type);
         }
 
         public void bindData(PostModel postModel, int position) {
-            title.setText(postModel.getTitle());
-            content.setText(postModel.getShortContent());
-            picture.setImageResource(R.drawable.book);
-            type.setText("(Book)");
+            tvTitle.setText(postModel.getTitle());
+            tvContent.setText(postModel.getShortContent());
+            ivPost.setImageResource(R.drawable.book);
+            tvType.setText("(Book)");
             itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
         }
     }
-
-
 }

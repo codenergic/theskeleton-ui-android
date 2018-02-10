@@ -1,11 +1,12 @@
 package org.codenergic.theskeleton.main;
 
 import org.codenergic.theskeleton.R;
-import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
 import org.codenergic.theskeleton.content.ContentActivity;
 import org.codenergic.theskeleton.editor.EditorActivity;
 import org.codenergic.theskeleton.model.PostModel;
+import org.codenergic.theskeleton.model.UserModel;
 import org.codenergic.theskeleton.profile.ProfileActivity;
 
 import android.content.Intent;
@@ -22,6 +23,8 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import dagger.android.AndroidInjection;
@@ -29,9 +32,11 @@ import dagger.android.AndroidInjection;
 /**
  * Created by diasa on 10/23/17.
  */
-public class MainActivity extends BaseActivity implements MainContract.View, OnItemClickListener {
+public class MainActivity extends BaseAuthActivity implements MainContract.View,
+    OnItemClickListener {
 
     @BindView(R.id.dl_main)
+
     DrawerLayout dlMain;
 
     @BindView(R.id.fab_post)
@@ -40,10 +45,15 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
     @BindView(R.id.nv_main)
     NavigationView nvMain;
 
+    @Inject
+    MainPresenter presenter;
+
     @BindView(R.id.rv_main_posts)
     RecyclerView rvMainPosts;
 
     private ContentAdapter contentAdapter;
+
+    private List<PostModel> posts;
 
     @Override
     public void setup() {
@@ -63,11 +73,12 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
 
     @Override
     public BasePresenter attachPresenter() {
-        return null;
+        return presenter;
     }
 
     private void initAdapter() {
-        contentAdapter = new ContentAdapter(dummyContent(), this);
+        posts = new ArrayList<>();
+        contentAdapter = new ContentAdapter(posts, this);
         rvMainPosts.setAdapter(contentAdapter);
     }
 
@@ -114,68 +125,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
                 ));
     }
 
-    //TODO remove dummy content
-    public static final List<PostModel> dummyContent() {
-        List<PostModel> posts = new ArrayList<>();
-        posts.add(new PostModel()
-            .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
-            .setShortContent(
-                "Kecelakaan yang terjadi di KM 12 Tol Cikampek arah Cawang ini menyebabkan macet " +
-                    "sekitar 1 km.")
-            .setType(0)
-        );
-        posts.add(new PostModel()
-            .setTitle("CCTV Jadi Andalan Ibu untuk Pantau Kondisi Anak saat Bekerja")
-            .setShortContent(
-                "CCTV tersambung dengan gadget, ibu bisa mengecek apakah si sudah minum susu atau" +
-                    " belum. Kapan saja, di mana saja.")
-            .setType(1)
-        );
-        posts.add(new PostModel()
-            .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
-            .setShortContent(
-                "Kecelakaan yang terjadi di KM 12 Tol Cikampek arah Cawang ini menyebabkan macet " +
-                    "sekitar 1 km.")
-            .setType(0)
-        );
-        posts.add(new PostModel()
-            .setTitle("CCTV Jadi Andalan Ibu untuk Pantau Kondisi Anak saat Bekerja")
-            .setShortContent(
-                "CCTV tersambung dengan gadget, ibu bisa mengecek apakah si sudah minum susu atau" +
-                    " belum. Kapan saja, di mana saja.")
-            .setType(1)
-        );
-        posts.add(new PostModel()
-            .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
-            .setShortContent(
-                "Kecelakaan yang terjadi di KM 12 Tol Cikampek arah Cawang ini menyebabkan macet " +
-                    "sekitar 1 km.")
-            .setType(0)
-        );
-        posts.add(new PostModel()
-            .setTitle("CCTV Jadi Andalan Ibu untuk Pantau Kondisi Anak saat Bekerja")
-            .setShortContent(
-                "CCTV tersambung dengan gadget, ibu bisa mengecek apakah si sudah minum susu atau" +
-                    " belum. Kapan saja, di mana saja.")
-            .setType(1)
-        );
-        posts.add(new PostModel()
-            .setTitle("Truk Tabrak Tiang di KM 12 Cikampek, Lalu Lintas Arah Cawang Padat")
-            .setShortContent(
-                "Kecelakaan yang terjadi di KM 12 Tol Cikampek arah Cawang ini menyebabkan macet " +
-                    "sekitar 1 km.")
-            .setType(0)
-        );
-        posts.add(new PostModel()
-            .setTitle("CCTV Jadi Andalan Ibu untuk Pantau Kondisi Anak saat Bekerja")
-            .setShortContent(
-                "CCTV tersambung dengan gadget, ibu bisa mengecek apakah si sudah minum susu atau" +
-                    " belum. Kapan saja, di mana saja.")
-            .setType(1)
-        );
-        return posts;
-    }
-
     @OnClick(R.id.fab_post)
     public void onFabClick() {
         startActivity(new Intent(this, EditorActivity.class));
@@ -191,17 +140,23 @@ public class MainActivity extends BaseActivity implements MainContract.View, OnI
     }
 
     @Override
-    public void onGotPostsSuccess() {
-
+    public void onGotPostsSuccess(List<PostModel> posts) {
+        this.posts = posts;
+        contentAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onGotPostsFailed() {
-
+        alertHelper.showWarningAlert(this, "Failed to load post");
     }
 
     @Override
     public void onItemClick(int position) {
         startActivity(new Intent(this, ContentActivity.class));
+    }
+
+    @Override
+    public void onAuthorized(UserModel userModel) {
+        presenter.getPosts(0, 10);
     }
 }

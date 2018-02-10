@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Flowable;
 
-public class SignUp extends UseCase<User, SignUp.Params>{
+public class SignUp extends UseCase<User, SignUp.Params> {
 
     private final UserRepository userRepository;
 
@@ -23,9 +23,12 @@ public class SignUp extends UseCase<User, SignUp.Params>{
     }
 
     public static class Params {
-        private final String username;
-        private final String password;
+
         private final String email;
+
+        private final String password;
+
+        private final String username;
 
         public Params(String username, String password, String email) {
             this.username = username;

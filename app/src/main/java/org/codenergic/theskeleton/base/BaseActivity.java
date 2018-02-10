@@ -1,6 +1,7 @@
 package org.codenergic.theskeleton.base;
 
 import org.codenergic.theskeleton.R;
+import org.codenergic.theskeleton.helper.AlertHelper;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    protected AlertHelper alertHelper;
+
     @Nullable
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -30,8 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         findViews();
-        setup();
         setToolbar();
+        setup();
     }
 
     public void findViews() {
@@ -41,8 +44,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public abstract void setup();
-
     private void setToolbar() {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -50,6 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
     }
+
+    public abstract void setup();
 
     public abstract int getLayout();
 

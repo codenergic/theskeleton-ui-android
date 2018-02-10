@@ -8,4 +8,8 @@ public interface UserRepository {
 
     Flowable<User> signUp(String username, String password, String email);
 
+    Flowable<User> getProfileUser();
+
+    Flowable<User> getCurrentUser();
+
 }

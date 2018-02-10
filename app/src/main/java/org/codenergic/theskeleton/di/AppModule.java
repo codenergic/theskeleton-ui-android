@@ -2,11 +2,15 @@ package org.codenergic.theskeleton.di;
 
 import android.app.Application;
 import android.content.Context;
+
 import dagger.Module;
 import dagger.Provides;
+
 import org.codenergic.theskeleton.data.authentication.repository.AuthenticationEntityRepository;
+import org.codenergic.theskeleton.data.post.repository.PostEntityRepository;
 import org.codenergic.theskeleton.data.user.repository.UserEntityRepository;
 import org.codenergic.theskeleton.domain.authentication.repository.AuthenticationRepository;
+import org.codenergic.theskeleton.domain.post.repository.PostRepository;
 import org.codenergic.theskeleton.domain.user.repository.UserRepository;
 
 import javax.inject.Singleton;
@@ -16,6 +20,7 @@ import javax.inject.Singleton;
  */
 @Module
 public class AppModule {
+
     @Provides
     @Singleton
     Context provideContext(Application application) {
@@ -35,4 +40,9 @@ public class AppModule {
         return userEntityRepository;
     }
 
+    @Provides
+    @Singleton
+    PostRepository providesPostRepository(PostEntityRepository postEntityRepository) {
+        return postEntityRepository;
+    }
 }
