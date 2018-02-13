@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion setup.compileSdkVersion
@@ -26,6 +25,8 @@ android {
             minifyEnabled false
         }
     }
+
+    flavorDimensions "default"
 
     productFlavors {
         dev {
@@ -63,35 +64,11 @@ android {
     }
 }
 
-configurations {
-    devDebugCompile
-    devReleaseCompile
-    stageDebugCompile
-    stageReleaseCompile
-    betaDebugCompile
-    betaReleaseCompile
-    storeDebugCompile
-    storeReleaseCompile
-}
 
 dependencies {
     rootProject.appDependencies.each {
         add(it.configuration, it.dependency, it.options)
     }
-    devDebugCompile project(path: ':data', configuration: 'devDebug')
-    devReleaseCompile project(path: ':data', configuration: 'devRelease')
-    stageDebugCompile project(path: ':data', configuration: 'stageDebug')
-    stageReleaseCompile project(path: ':data', configuration: 'stageRelease')
-    betaDebugCompile project(path: ':data', configuration: 'betaDebug')
-    betaReleaseCompile project(path: ':data', configuration: 'betaRelease')
-    storeDebugCompile project(path: ':data', configuration: 'storeDebug')
-    storeReleaseCompile project(path: ':data', configuration: 'storeRelease')
-    devDebugCompile project(path: ':domain', configuration: 'debug')
-    devReleaseCompile project(path: ':domain', configuration: 'release')
-    stageDebugCompile project(path: ':domain', configuration: 'debug')
-    stageReleaseCompile project(path: ':domain', configuration: 'release')
-    betaDebugCompile project(path: ':domain', configuration: 'debug')
-    betaReleaseCompile project(path: ':domain', configuration: 'release')
-    storeDebugCompile project(path: ':domain', configuration: 'debug')
-    storeReleaseCompile project(path: ':domain', configuration: 'release')
+    api project(':data')
+    api project(':domain')
 }

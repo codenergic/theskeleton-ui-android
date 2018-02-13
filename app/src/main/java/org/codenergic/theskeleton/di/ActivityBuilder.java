@@ -11,7 +11,7 @@ import org.codenergic.theskeleton.editor.EditorModule;
 import org.codenergic.theskeleton.login.LoginActivity;
 import org.codenergic.theskeleton.login.LoginModule;
 import org.codenergic.theskeleton.main.MainActivity;
-import org.codenergic.theskeleton.main.MainFragmentProvider;
+import org.codenergic.theskeleton.main.MainModule;
 import org.codenergic.theskeleton.profile.ProfileActivity;
 import org.codenergic.theskeleton.profile.ProfileModule;
 import org.codenergic.theskeleton.register.RegisterActivity;
@@ -29,7 +29,7 @@ public abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = LoginModule.class)
     abstract LoginActivity bindLoginActivity();
 
-    @ContributesAndroidInjector(modules = MainFragmentProvider.class)
+    @ContributesAndroidInjector(modules = MainModule.class)
     abstract MainActivity bindMainActivity();
 
     @ContributesAndroidInjector(modules = RegisterModule.class)

@@ -45,9 +45,10 @@ ext {
     retrofit = '2.3.0'
     retrofitJackson = '2.3.0'
     javaxAnnotation = '1.2'
+    jackson = '2.9.0'
 
     // Dependency Injection
-    dagger = '2.11'
+    dagger = '2.12'
     dexter = '4.1.0'
     timber = '4.5.1'
 
@@ -110,13 +111,15 @@ ext {
     ]
 
     def otherLibs = [
-            dagger         : "com.google.dagger:dagger:$dagger",
-            daggerCompiler : "com.google.dagger:dagger-compiler:$dagger",
-            daggerSupport  : "com.google.dagger:dagger-android-support:$dagger",
-            daggerProcessor: "com.google.dagger:dagger-android-processor:$dagger",
-            dexter         : "com.karumi:dexter:$dexter",
-            timber         : "com.jakewharton.timber:timber:$timber",
-            richeditor     : "jp.wasabeef:richeditor-android:$richeditor"
+            dagger            : "com.google.dagger:dagger:$dagger",
+            daggerCompiler    : "com.google.dagger:dagger-compiler:$dagger",
+            daggerSupport     : "com.google.dagger:dagger-android-support:$dagger",
+            daggerProcessor   : "com.google.dagger:dagger-android-processor:$dagger",
+            dexter            : "com.karumi:dexter:$dexter",
+            timber            : "com.jakewharton.timber:timber:$timber",
+            richeditor        : "jp.wasabeef:richeditor-android:$richeditor",
+            jacksonDatabind   : "com.fasterxml.jackson.core:jackson-databind:$jackson",
+            jacksonAnnotations: "com.fasterxml.jackson.core:jackson-annotations:$jackson"
     ]
 
     def testLibs = [
@@ -125,102 +128,113 @@ ext {
     ]
 
     appDependencies = [
-            [configuration: "compile", dependency: androidLibs.appCompat],
-            [configuration: "compile", dependency: androidLibs.design],
-            [configuration: "compile", dependency: androidLibs.percent],
-            [configuration: "compile", dependency: androidLibs.multidex],
-            [configuration: "compile", dependency: androidLibs.constraintLayout],
+            [configuration: "implementation", dependency: androidLibs.appCompat],
+            [configuration: "implementation", dependency: androidLibs.design],
+            [configuration: "implementation", dependency: androidLibs.percent],
+            [configuration: "implementation", dependency: androidLibs.multidex],
+            [configuration: "implementation", dependency: androidLibs.constraintLayout],
 
-            [configuration: "compile", dependency: googleLibs.maps],
-            [configuration: "compile", dependency: googleLibs.location],
-            [configuration: "compile", dependency: googleLibs.identity],
-            [configuration: "compile", dependency: googleLibs.analytics],
-            [configuration: "compile", dependency: googleLibs.gcm],
+            [configuration: "implementation", dependency: googleLibs.maps],
+            [configuration: "implementation", dependency: googleLibs.location],
+            [configuration: "implementation", dependency: googleLibs.identity],
+            [configuration: "implementation", dependency: googleLibs.analytics],
+            [configuration: "implementation", dependency: googleLibs.gcm],
 
-            [configuration: "compile", dependency: uiLibs.glide],
-            [configuration: "compile", dependency: uiLibs.paginate],
-            [configuration: "compile", dependency: uiLibs.material],
-            [configuration: "compile", dependency: uiLibs.butterknife],
+            [configuration: "implementation", dependency: uiLibs.glide],
+            [configuration: "implementation", dependency: uiLibs.paginate],
+            [configuration: "implementation", dependency: uiLibs.material],
+            [configuration: "implementation", dependency: uiLibs.butterknife],
             [configuration: "annotationProcessor", dependency: uiLibs.butterknifeCompiler],
-            [configuration: "compile", dependency: uiLibs.calligraphy],
-            [configuration: "compile", dependency: uiLibs.iconics],
-            [configuration: "compile", dependency: uiLibs.circleImageView],
-            [configuration: "compile", dependency: uiLibs.autofitTextView],
-            [configuration: "compile", dependency: uiLibs.saripaar],
-            [configuration: "compile", dependency: uiLibs.smartTabLayout],
-            [configuration: "compile", dependency: uiLibs.circleIndicator],
-            [configuration: "compile", dependency: uiLibs.materialTypeFace],
-            [configuration: "compile", dependency: uiLibs.crouton, options: {
+            [configuration: "implementation", dependency: uiLibs.calligraphy],
+            [configuration: "implementation", dependency: uiLibs.iconics],
+            [configuration: "implementation", dependency: uiLibs.circleImageView],
+            [configuration: "implementation", dependency: uiLibs.autofitTextView],
+            [configuration: "implementation", dependency: uiLibs.saripaar],
+            [configuration: "implementation", dependency: uiLibs.smartTabLayout],
+            [configuration: "implementation", dependency: uiLibs.circleIndicator],
+            [configuration: "implementation", dependency: uiLibs.materialTypeFace],
+            [configuration: "implementation", dependency: uiLibs.crouton, options: {
                 exclude group: 'com.google.android', module: 'support-v4'
             }],
-            [configuration: "compile", dependency: uiLibs.autoScrollViewPager, options: {
+            [configuration: "implementation", dependency: uiLibs.autoScrollViewPager, options: {
                 exclude group: 'com.google.android', module: 'support-v4'
             }],
-            [configuration: "compile", dependency: uiLibs.alerter],
+            [configuration: "implementation", dependency: uiLibs.alerter],
 
-            [configuration: "compile", dependency: rxLibs.rxJava],
-            [configuration: "compile", dependency: rxLibs.rxAndroid],
-            [configuration: "compile", dependency: rxLibs.rxBinding],
-            [configuration: "compile", dependency: rxLibs.rxImagePicker],
-            [configuration: "compile", dependency: rxLibs.rxProguardRules],
-            [configuration: "compile", dependency: rxLibs.rxLint],
+            [configuration: "implementation", dependency: rxLibs.rxJava],
+            [configuration: "implementation", dependency: rxLibs.rxAndroid],
+            [configuration: "implementation", dependency: rxLibs.rxBinding],
+            [configuration: "implementation", dependency: rxLibs.rxImagePicker],
+            [configuration: "implementation", dependency: rxLibs.rxProguardRules],
+            [configuration: "implementation", dependency: rxLibs.rxLint],
 
-            [configuration: "compile", dependency: otherLibs.dagger],
+            [configuration: "implementation", dependency: otherLibs.dagger],
             [configuration: "annotationProcessor", dependency: otherLibs.daggerCompiler],
             [configuration: "annotationProcessor", dependency: otherLibs.daggerProcessor],
-            [configuration: "compile", dependency: otherLibs.daggerSupport],
-            [configuration: "compile", dependency: otherLibs.dexter],
-            [configuration: "compile", dependency: otherLibs.timber],
-            [configuration: "compile", dependency: otherLibs.richeditor],
-
-            [configuration: "provided", dependency: networkLibs.autoValue],
+            [configuration: "implementation", dependency: otherLibs.daggerSupport],
+            [configuration: "implementation", dependency: otherLibs.dexter],
+            [configuration: "implementation", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.jacksonDatabind],
+            [configuration: "implementation", dependency: otherLibs.jacksonAnnotations],
+            [configuration: "implementation", dependency: otherLibs.richeditor],
+            [configuration: "implementation", dependency: networkLibs.retrofit],
+            [configuration: "implementation", dependency: networkLibs.retrofitJackson],
+            [configuration: "implementation", dependency: networkLibs.retrofitRxAdapter],
+            [configuration: "compileOnly", dependency: networkLibs.autoValue],
             [configuration: "annotationProcessor", dependency: networkLibs.autoValue],
-            [configuration: "compile", dependency: networkLibs.javaxAnnotation],
-
-            [configuration: "testCompile", dependency: testLibs.junit],
-            [configuration: "testCompile", dependency: testLibs.mockito]
+            [configuration: "implementation", dependency: networkLibs.javaxAnnotation],
+            [configuration: "implementation", dependency: networkLibs.okHttpLogging],
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "testImplementation", dependency: testLibs.mockito]
     ]
 
     domainDependencies = [
-            [configuration: "compile", dependency: androidLibs.appCompat],
+            [configuration: "implementation", dependency: androidLibs.appCompat],
 
-            [configuration: "compile", dependency: rxLibs.rxJava],
-            [configuration: "compile", dependency: rxLibs.rxAndroid],
-            [configuration: "compile", dependency: rxLibs.rxProguardRules],
-            [configuration: "compile", dependency: rxLibs.rxLint],
+            [configuration: "implementation", dependency: rxLibs.rxJava],
+            [configuration: "implementation", dependency: rxLibs.rxAndroid],
+            [configuration: "implementation", dependency: rxLibs.rxProguardRules],
+            [configuration: "implementation", dependency: rxLibs.rxLint],
 
-            [configuration: "compile", dependency: otherLibs.dagger],
+            [configuration: "implementation", dependency: otherLibs.dagger],
             [configuration: "annotationProcessor", dependency: otherLibs.daggerCompiler],
             [configuration: "annotationProcessor", dependency: otherLibs.daggerProcessor],
-            [configuration: "compile", dependency: otherLibs.daggerSupport],
-            [configuration: "compile", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.daggerSupport],
+            [configuration: "implementation", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.jacksonDatabind],
+            [configuration: "implementation", dependency: otherLibs.jacksonAnnotations],
 
-            [configuration: "provided", dependency: networkLibs.autoValue],
+            [configuration: "compileOnly", dependency: networkLibs.autoValue],
             [configuration: "annotationProcessor", dependency: networkLibs.autoValue],
-            [configuration: "compile", dependency: networkLibs.javaxAnnotation],
+            [configuration: "implementation", dependency: networkLibs.javaxAnnotation],
 
-            [configuration: "testCompile", dependency: testLibs.junit],
-            [configuration: "testCompile", dependency: testLibs.mockito]
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "testImplementation", dependency: testLibs.mockito]
     ]
 
     dataDependencies = [
-            [configuration: "compile", dependency: rxLibs.rxJava],
-            [configuration: "compile", dependency: rxLibs.rxAndroid],
-            [configuration: "compile", dependency: rxLibs.rxProguardRules],
-            [configuration: "compile", dependency: rxLibs.rxLint],
-            [configuration: "compile", dependency: rxLibs.rxPreferences],
+            [configuration: "implementation", dependency: rxLibs.rxJava],
+            [configuration: "implementation", dependency: rxLibs.rxAndroid],
+            [configuration: "implementation", dependency: rxLibs.rxProguardRules],
+            [configuration: "implementation", dependency: rxLibs.rxLint],
+            [configuration: "implementation", dependency: rxLibs.rxPreferences],
 
-            [configuration: "provided", dependency: networkLibs.autoValue],
+            [configuration: "implementation", dependency: otherLibs.dagger],
+            [configuration: "annotationProcessor", dependency: otherLibs.daggerCompiler],
+            [configuration: "annotationProcessor", dependency: otherLibs.daggerProcessor],
+            [configuration: "implementation", dependency: otherLibs.daggerSupport],
+
+            [configuration: "compileOnly", dependency: networkLibs.autoValue],
             [configuration: "annotationProcessor", dependency: networkLibs.autoValue],
-            [configuration: "compile", dependency: networkLibs.retrofit],
-            [configuration: "compile", dependency: networkLibs.retrofitJackson],
-            [configuration: "compile", dependency: networkLibs.retrofitRxAdapter],
-            [configuration: "compile", dependency: networkLibs.okHttpLogging],
-            [configuration: "compile", dependency: networkLibs.javaxAnnotation],
+            [configuration: "implementation", dependency: networkLibs.retrofit],
+            [configuration: "implementation", dependency: networkLibs.retrofitJackson],
+            [configuration: "implementation", dependency: networkLibs.retrofitRxAdapter],
+            [configuration: "implementation", dependency: networkLibs.okHttpLogging],
+            [configuration: "implementation", dependency: networkLibs.javaxAnnotation],
 
-            [configuration: "compile", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.timber],
 
-            [configuration: "testCompile", dependency: testLibs.junit],
-            [configuration: "testCompile", dependency: testLibs.mockito]
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "testImplementation", dependency: testLibs.mockito]
     ]
 }

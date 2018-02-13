@@ -1,4 +1,4 @@
-package org.codenergic.theskeleton.main.fragment;
+package org.codenergic.theskeleton.main;
 
 import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.domain.DefaultSubscriber;
@@ -12,16 +12,16 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Created by diasa on 10/24/17.
+ * Created by diasa on 2/10/18.
  */
-public class MainFragmentPresenter extends BasePresenter implements MainFragmentContract.Presenter {
+public class MainPresenter extends BasePresenter implements MainContract.Presenter {
 
     private final GetPosts getPosts;
 
-    private final MainFragmentContract.View view;
+    private final MainContract.View view;
 
     @Inject
-    public MainFragmentPresenter(GetPosts getPosts, MainFragmentContract.View view) {
+    public MainPresenter(GetPosts getPosts, MainContract.View view) {
         this.getPosts = getPosts;
         this.view = view;
     }
