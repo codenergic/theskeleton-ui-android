@@ -10,7 +10,7 @@ import com.tapadoo.alerter.Alerter;
  */
 public class AlertHelper {
 
-    public void showWarningAlert(Activity activity, String text) {
+    public static void showWarningAlert(Activity activity, String text) {
         Alerter.create(activity)
             .setText(text)
             .setIcon(android.R.drawable.stat_sys_warning)

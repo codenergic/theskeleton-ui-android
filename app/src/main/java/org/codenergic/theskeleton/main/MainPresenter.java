@@ -12,7 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Created by diasa on 2/10/18.
+ * Created by diasa on 10/24/17.
  */
 public class MainPresenter extends BasePresenter implements MainContract.Presenter {
 
@@ -34,8 +34,8 @@ public class MainPresenter extends BasePresenter implements MainContract.Present
                 List<PostModel> postModels = new ArrayList<>();
                 for (Post a : posts) {
                     postModels.add(new PostModel()
-                        .setTitle(a.getTitle())
-                        .setShortContent(a.getContent())
+                            .setTitle(a.getTitle())
+                            .setShortContent(a.getContent())
                     );
                 }
                 view.onGotPostsSuccess(postModels);

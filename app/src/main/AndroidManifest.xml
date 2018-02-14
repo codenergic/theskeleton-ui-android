@@ -13,11 +13,9 @@
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".editor.EditorActivity"/>
@@ -31,5 +29,4 @@
         <activity android:name=".draft.DraftActivity"
             android:parentActivityName=".main.MainActivity"/>
     </application>
-
 </manifest>

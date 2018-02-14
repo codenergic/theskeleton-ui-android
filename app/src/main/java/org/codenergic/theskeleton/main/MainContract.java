@@ -5,9 +5,9 @@ import org.codenergic.theskeleton.model.PostModel;
 import java.util.List;
 
 /**
- * Created by diasa on 2/10/18.
+ * Created by diasa on 10/23/17.
  */
-public class MainContract {
+public interface MainContract {
 
     interface View {
 

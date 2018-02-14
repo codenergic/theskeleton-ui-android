@@ -33,6 +33,7 @@
             android:tint="@color/white"
             app:layout_anchor="@id/rv_main_posts"
             app:layout_anchorGravity="bottom|right|end"/>
+
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView

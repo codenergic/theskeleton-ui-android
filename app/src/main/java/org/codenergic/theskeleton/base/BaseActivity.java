@@ -20,8 +20,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected AlertHelper alertHelper;
-
     @Nullable
     @BindView(R.id.toolbar)
     Toolbar toolbar;
