@@ -29,12 +29,27 @@ public class RestPostEntityData implements PostData {
     @Override
     public Flowable<RetrofitResponse<List<PostEntity>>> getPosts(int page, int size) {
         return postApi.getPosts(page, size)
-            .compose(RxTransformer.applyThreadTransformer());
+                .compose(RxTransformer.applyThreadTransformer());
     }
 
     @Override
     public Flowable<PostEntity> createPost(CreatePostRequest createPostRequest) {
         return postApi.createPost(createPostRequest)
-            .compose(RxTransformer.applyThreadTransformer());
+                .compose(RxTransformer.applyThreadTransformer());
+    }
+
+    @Override
+    public Flowable<RetrofitResponse<List<PostEntity>>> getPostsByStatus(String user, String status, int page, int size) {
+        return postApi.getPostsByStatus(user, status, page, size).compose(RxTransformer.applyThreadTransformer());
+    }
+
+    @Override
+    public Flowable<PostEntity> updatePost(String postId, CreatePostRequest createPostRequest) {
+        return postApi.updatePost(postId, createPostRequest).compose(RxTransformer.applyThreadTransformer());
+    }
+
+    @Override
+    public Flowable<Void> removePost(String postId) {
+        return postApi.removePost(postId).compose(RxTransformer.applyThreadTransformer());
     }
 }

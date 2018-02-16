@@ -71,7 +71,7 @@ public class EditorActivity extends BaseEditorActivity implements EditorContract
                     showProgress();
                     presenter.createPost(etTitle.getText().toString(), edContent.getHtml());
                 }
-                return true;
+                return super.onOptionsItemSelected(item);
             default:
                 return super.onOptionsItemSelected(item);
         }

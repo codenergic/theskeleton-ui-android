@@ -15,6 +15,7 @@ import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
 import org.codenergic.theskeleton.content.ContentActivity;
+import org.codenergic.theskeleton.draft.DraftActivity;
 import org.codenergic.theskeleton.editor.EditorActivity;
 import org.codenergic.theskeleton.helper.AlertHelper;
 import org.codenergic.theskeleton.model.PostModel;
@@ -37,7 +38,6 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
         OnItemClickListener {
 
     @BindView(R.id.dl_main)
-
     DrawerLayout dlMain;
 
     @BindView(R.id.fab_post)
@@ -60,6 +60,7 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
     public void setup() {
         AndroidInjection.inject(this);
         showMenuIconToolbar();
+        setTitleToolbar(this.getResources().getString(R.string.app));
         initAdapter();
         initRecyclerViewLayoutManager();
         initRecyclerViewScrollListener();
@@ -115,6 +116,10 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
     private void setupNavigationView() {
         nvMain.setNavigationItemSelectedListener((menuItem) -> {
             menuItem.setChecked(true);
+            int id = menuItem.getItemId();
+            if (id == R.id.navigation_item_draft){
+                startActivity(new Intent(this, DraftActivity.class));
+            }
             dlMain.closeDrawers();
             return true;
         });

@@ -1,13 +1,12 @@
 package org.codenergic.theskeleton.base;
 
-import org.codenergic.theskeleton.R;
-import org.codenergic.theskeleton.helper.AlertHelper;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import org.codenergic.theskeleton.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -89,6 +88,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void setTitleToolbar(String title) {
         if (toolbar != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(true);
             getSupportActionBar().setTitle(title);
         }
     }

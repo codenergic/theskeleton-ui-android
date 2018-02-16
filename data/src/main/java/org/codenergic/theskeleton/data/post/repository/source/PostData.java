@@ -16,4 +16,10 @@ public interface PostData {
     Flowable<RetrofitResponse<List<PostEntity>>> getPosts(int page, int size);
 
     Flowable<PostEntity> createPost(CreatePostRequest createPostRequest);
+
+    Flowable<RetrofitResponse<List<PostEntity>>> getPostsByStatus(String user, String status, int page, int size);
+
+    Flowable<PostEntity> updatePost(String postId, CreatePostRequest createPostRequest);
+
+    Flowable<Void> removePost(String postId);
 }

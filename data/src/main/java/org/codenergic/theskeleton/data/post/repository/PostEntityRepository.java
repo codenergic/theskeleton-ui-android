@@ -43,4 +43,29 @@ public class PostEntityRepository implements PostRepository {
         return postDataFactory.createData().createPost(createPostRequest)
             .map(PostEntity::toPost);
     }
+
+    @Override
+    public Flowable<List<Post>> getPostByStatus(String user, String status, int page, int size) {
+        return postDataFactory.createData().getPostsByStatus(user, status, page, size)
+            .map(listRetrofitResponse -> {
+                List<Post> posts = new ArrayList<>();
+                for (PostEntity postEntity: listRetrofitResponse.getContent()) {
+                    posts.add(postEntity.toPost());
+                }
+                return posts;
+        });
+    }
+
+    @Override
+    public Flowable<Post> updatePost(String id, String title, String content) {
+        CreatePostRequest createPostRequest = new CreatePostRequest(title, content);
+        return postDataFactory.createData().updatePost(id, createPostRequest)
+            .map(PostEntity::toPost);
+    }
+
+    @Override
+    public Flowable<Void> removePost(String id) {
+        return postDataFactory.createData().removePost(id);
+    }
+
 }

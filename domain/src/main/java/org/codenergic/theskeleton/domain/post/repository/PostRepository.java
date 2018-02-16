@@ -14,4 +14,10 @@ public interface PostRepository {
     Flowable<List<Post>> getPost(int page, int size);
 
     Flowable<Post> createPost(String title, String content);
+
+    Flowable<List<Post>> getPostByStatus(String user, String status, int page, int size);
+
+    Flowable<Post> updatePost(String id, String title, String content);
+
+    Flowable<Void> removePost(String id);
 }
