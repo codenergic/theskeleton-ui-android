@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">@color/outerSpace</color>
+    <color name="colorPrimaryDark">@color/blueCharcoal</color>
+    <color name="colorAccent">@color/trout</color>
+
+    <color name="outerSpace">#263238</color>
+    <color name="blueCharcoal">#000a12</color>
+    <color name="trout">#4F5B62</color>
     <color name="white">#FFFFFF</color>
-    <color name="dark_grey">#424242</color>
-    <color name="medium_grey">#9E9E9E</color>
-    <color name="button_grey">#757575</color>
-    <color name="light_grey">#f7f7f7</color>
-    <color name="backdrop_gray">#566771</color>
+    <color name="tundora">#424242</color>
+    <color name="silverChalice">#9E9E9E</color>
+    <color name="boulder">#757575</color>
+    <color name="alabaster">#f7f7f7</color>
+    <color name="shuttleGray">#566771</color>
+
 </resources>
