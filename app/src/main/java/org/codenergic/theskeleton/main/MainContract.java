@@ -1,6 +1,5 @@
 package org.codenergic.theskeleton.main;
 
-import org.codenergic.theskeleton.domain.post.Post;
 import org.codenergic.theskeleton.model.PostModel;
 
 import java.util.List;

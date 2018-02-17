@@ -34,8 +34,8 @@ public class MainPresenter extends BasePresenter implements MainContract.Present
                 List<PostModel> postModels = new ArrayList<>();
                 for (Post a : posts) {
                     postModels.add(new PostModel()
-                        .setTitle(a.getTitle())
-                        .setShortContent(a.getContent())
+                            .setTitle(a.getTitle())
+                            .setShortContent(a.getContent())
                     );
                 }
                 view.onGotPostsSuccess(postModels);

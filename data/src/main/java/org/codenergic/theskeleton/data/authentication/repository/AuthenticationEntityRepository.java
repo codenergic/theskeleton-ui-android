@@ -8,6 +8,7 @@ import org.codenergic.theskeleton.data.authentication.repository.source.Authenti
 import org.codenergic.theskeleton.data.helper.TokenManager;
 import org.codenergic.theskeleton.domain.authentication.Authentication;
 import org.codenergic.theskeleton.domain.authentication.repository.AuthenticationRepository;
+import org.codenergic.theskeleton.domain.user.User;
 import org.reactivestreams.Publisher;
 
 import javax.inject.Inject;

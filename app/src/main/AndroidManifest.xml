@@ -13,20 +13,20 @@
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.LoginActivity"/>
-        <activity android:name=".editor.EditorActivity"/>
+        <activity android:name=".editor.EditorActivity"
+            android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".content.ContentActivity"
             android:parentActivityName=".main.MainActivity"/>
-        <activity android:name=".profile.ProfileActivity"/>
-        android:parentActivityName=".main.MainActivity"/>
+        <activity android:name=".profile.ProfileActivity"
+            android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".content.comment.CommentActivity"
             android:parentActivityName=".content.ContentActivity"/>
+        <activity android:name=".draft.DraftActivity"
+            android:parentActivityName=".main.MainActivity"/>
     </application>
-
 </manifest>

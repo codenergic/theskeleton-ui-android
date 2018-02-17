@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion setup.compileSdkVersion
@@ -11,8 +10,6 @@ android {
         versionCode setup.versionCode
         versionName setup.versionName
     }
-
-    publishNonDefault true
 
     buildTypes {
         release {
@@ -34,20 +31,8 @@ android {
     }
 }
 
-configurations {
-    devDebugCompile
-    devReleaseCompile
-    stageDebugCompile
-    stageReleaseCompile
-    betaDebugCompile
-    betaReleaseCompile
-    storeDebugCompile
-    storeReleaseCompile
-}
-
 dependencies {
     rootProject.domainDependencies.each {
         add(it.configuration, it.dependency, it.options)
     }
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.0'
 }

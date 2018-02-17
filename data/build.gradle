@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion setup.compileSdkVersion
@@ -13,8 +12,6 @@ android {
 
     }
 
-    publishNonDefault true
-
     buildTypes {
         release {
             minifyEnabled true
@@ -24,6 +21,8 @@ android {
             minifyEnabled false
         }
     }
+
+    flavorDimensions "default"
 
     productFlavors {
         dev {
@@ -51,28 +50,9 @@ android {
     }
 }
 
-configurations {
-    devDebugCompile
-    devReleaseCompile
-    stageDebugCompile
-    stageReleaseCompile
-    betaDebugCompile
-    betaReleaseCompile
-    storeDebugCompile
-    storeReleaseCompile
-}
-
 dependencies {
     rootProject.dataDependencies.each {
         add(it.configuration, it.dependency, it.options)
     }
-
-    devDebugCompile project(path: ':domain', configuration: 'debug')
-    devReleaseCompile project(path: ':domain', configuration: 'release')
-    stageDebugCompile project(path: ':domain', configuration: 'debug')
-    stageReleaseCompile project(path: ':domain', configuration: 'release')
-    betaDebugCompile project(path: ':domain', configuration: 'debug')
-    betaReleaseCompile project(path: ':domain', configuration: 'release')
-    storeDebugCompile project(path: ':domain', configuration: 'debug')
-    storeReleaseCompile project(path: ':domain', configuration: 'release')
+    api project(':domain')
 }

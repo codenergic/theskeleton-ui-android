@@ -4,6 +4,8 @@ import org.codenergic.theskeleton.content.ContentActivity;
 import org.codenergic.theskeleton.content.ContentModule;
 import org.codenergic.theskeleton.content.comment.CommentActivity;
 import org.codenergic.theskeleton.content.comment.CommentModule;
+import org.codenergic.theskeleton.draft.DraftActivity;
+import org.codenergic.theskeleton.draft.DraftModule;
 import org.codenergic.theskeleton.editor.EditorActivity;
 import org.codenergic.theskeleton.editor.EditorModule;
 import org.codenergic.theskeleton.login.LoginActivity;
@@ -44,4 +46,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = ProfileModule.class)
     abstract ProfileActivity bindProfileActivity();
+
+    @ContributesAndroidInjector(modules = DraftModule.class)
+    abstract DraftActivity bindDraftActivity();
 }

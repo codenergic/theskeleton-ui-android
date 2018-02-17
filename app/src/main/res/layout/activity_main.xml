@@ -16,11 +16,11 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_main_posts"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/toolbar"
-            android:paddingBottom="@dimen/title_padding"
             android:clipToPadding="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:paddingBottom="@dimen/title_padding"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_post"
@@ -33,6 +33,7 @@
             android:tint="@color/white"
             app:layout_anchor="@id/rv_main_posts"
             app:layout_anchorGravity="bottom|right|end"/>
+
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
