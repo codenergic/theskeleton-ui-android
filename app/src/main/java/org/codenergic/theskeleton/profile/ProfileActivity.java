@@ -3,7 +3,9 @@ package org.codenergic.theskeleton.profile;
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
 import org.codenergic.theskeleton.content.post.PostFragment;
+import org.codenergic.theskeleton.model.UserModel;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
@@ -20,7 +22,7 @@ import dagger.android.AndroidInjection;
 /**
  * Created by diasa on 12/14/17.
  */
-public class ProfileActivity extends BaseActivity implements ProfileContract.View,
+public class ProfileActivity extends BaseAuthActivity implements ProfileContract.View,
     AppBarLayout.OnOffsetChangedListener {
 
     private static final int PERCENTAGE_TO_ANIMATE_AVATAR = 20;
@@ -85,6 +87,11 @@ public class ProfileActivity extends BaseActivity implements ProfileContract.Vie
                 .scaleY(1).scaleX(1)
                 .start();
         }
+    }
+
+    @Override
+    public void onAuthorized(UserModel userModel) {
+
     }
 
     private static class TabsAdapter extends FragmentPagerAdapter {

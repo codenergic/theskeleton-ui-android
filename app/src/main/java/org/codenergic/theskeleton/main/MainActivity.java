@@ -1,16 +1,5 @@
 package org.codenergic.theskeleton.main;
 
-import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
-
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
@@ -21,6 +10,17 @@ import org.codenergic.theskeleton.helper.AlertHelper;
 import org.codenergic.theskeleton.model.PostModel;
 import org.codenergic.theskeleton.model.UserModel;
 import org.codenergic.theskeleton.profile.ProfileActivity;
+
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,7 +153,7 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
 
     @Override
     public void onGotPostsFailed() {
-        AlertHelper.showErrorAlert(this, "Failed to load post");
+        AlertHelper.showErrorAlert(this, getString(R.string.failed_to_load_posts_error_message));
     }
 
     @Override

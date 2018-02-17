@@ -1,6 +1,7 @@
 package org.codenergic.theskeleton.base;
 
 import org.codenergic.theskeleton.R;
+import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
 
 import android.widget.ImageButton;
 
@@ -10,7 +11,7 @@ import jp.wasabeef.richeditor.RichEditor;
 /**
  * Created by diasa on 2/5/18.
  */
-public abstract class BaseEditorActivity extends BaseActivity {
+public abstract class BaseEditorActivity extends BaseAuthActivity {
 
     RichEditor richEditor;
 

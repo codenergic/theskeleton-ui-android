@@ -31,4 +31,7 @@
     <string name="dummy_count">271</string>
     <string name="dummy_posting_date">on Sep 26</string>
     <string name="dummy_comment">Man.. That was awesome!</string>
+
+    <string name="failed_to_load_posts_error_message">Failed to load posts.</string>
+    <string name="failed_to_load_draft_error_message">Failed to load draft.</string>
 </resources>

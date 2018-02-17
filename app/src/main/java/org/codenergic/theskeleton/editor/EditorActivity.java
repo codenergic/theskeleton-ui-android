@@ -5,6 +5,7 @@ import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BaseEditorActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
 import org.codenergic.theskeleton.model.PostModel;
+import org.codenergic.theskeleton.model.UserModel;
 
 import android.app.ProgressDialog;
 import android.support.v4.app.NavUtils;
@@ -104,5 +105,10 @@ public class EditorActivity extends BaseEditorActivity implements EditorContract
             progressDialog.setMessage("Loading, Please Wait...");
         }
         return progressDialog;
+    }
+
+    @Override
+    public void onAuthorized(UserModel userModel) {
+
     }
 }
