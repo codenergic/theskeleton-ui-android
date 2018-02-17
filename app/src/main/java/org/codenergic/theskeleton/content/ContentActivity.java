@@ -1,12 +1,12 @@
 package org.codenergic.theskeleton.content;
 
 import org.codenergic.theskeleton.R;
-import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.base.BaseRecyclerViewHolder;
 import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
 import org.codenergic.theskeleton.content.comment.CommentActivity;
 import org.codenergic.theskeleton.content.comment.CommentAdapter;
-import org.codenergic.theskeleton.main.MainActivity;
+import org.codenergic.theskeleton.model.PostModel;
 import org.codenergic.theskeleton.model.UserModel;
 
 import android.content.Intent;
@@ -28,7 +28,7 @@ import dagger.android.AndroidInjection;
  * Created by diasa on 12/9/17.
  */
 public class ContentActivity extends BaseAuthActivity implements ContentContract.View,
-    OnItemClickListener {
+    BaseRecyclerViewHolder.OnItemClickListener {
 
     @BindView(R.id.content)
     TextView content;
@@ -38,6 +38,8 @@ public class ContentActivity extends BaseAuthActivity implements ContentContract
 
     @BindView(R.id.title)
     TextView title;
+
+    private CommentAdapter commentAdapter;
 
     @Override
     public void setup() {
@@ -54,8 +56,12 @@ public class ContentActivity extends BaseAuthActivity implements ContentContract
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        CommentAdapter adapter = new CommentAdapter(new ArrayList<>(), this);
-        recyclerView.setAdapter(adapter);
+        //TODO investigate for further implementation, it should be using CommentModel
+        commentAdapter = new CommentAdapter();
+        commentAdapter.setItems(new ArrayList<PostModel>());
+        commentAdapter.setOnItemClickListener(this);
+
+        recyclerView.setAdapter(commentAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(
             recyclerView.getContext(),
             OrientationHelper.VERTICAL
