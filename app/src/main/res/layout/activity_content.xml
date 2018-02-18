@@ -57,7 +57,7 @@
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_horizontal_margin"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
-                    android:background="@color/light_grey"
+                    android:background="@color/alabaster"
                     android:weightSum="1"
                     android:layout_below="@+id/content">
                 <de.hdodenhof.circleimageview.CircleImageView

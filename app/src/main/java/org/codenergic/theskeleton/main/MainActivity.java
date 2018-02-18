@@ -153,7 +153,7 @@ public class MainActivity extends BaseAuthActivity implements MainContract.View,
 
     @Override
     public void onGotPostsFailed() {
-        AlertHelper.showWarningAlert(this, "Failed to load post");
+        AlertHelper.showErrorAlert(this, "Failed to load post");
     }
 
     @Override
