@@ -1,62 +1,50 @@
 package org.codenergic.theskeleton.content.comment;
 
-import android.support.v7.widget.RecyclerView;
+import org.codenergic.theskeleton.R;
+import org.codenergic.theskeleton.base.BaseRecyclerViewAdapter;
+import org.codenergic.theskeleton.base.BaseRecyclerViewHolder;
+import org.codenergic.theskeleton.model.PostModel;
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import org.codenergic.theskeleton.R;
-import org.codenergic.theskeleton.content.OnItemClickListener;
-import org.codenergic.theskeleton.model.PostModel;
 
-import java.util.List;
+import butterknife.BindView;
 
 /**
  * Created by diasa on 12/25/17.
  */
-public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-    private OnItemClickListener onItemClickListener;
-    private List<PostModel> post;
-
-    public CommentAdapter(List<PostModel> posts, OnItemClickListener onItemClickListener) {
-        this.post = posts;
-        this.onItemClickListener = onItemClickListener;
-    }
+public class CommentAdapter extends BaseRecyclerViewAdapter<CommentAdapter
+    .CommentViewHolder, PostModel> {
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new CommentAdapter.ViewHolderComment(LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.item_card_comment, parent, false), parent, onItemClickListener);
+    public CommentAdapter.CommentViewHolder onCreateViewHolder(ViewGroup parent,
+        int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.item_card_comment, parent, false);
+        return new CommentViewHolder(parent.getContext(), view);
     }
 
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((CommentAdapter.ViewHolderComment) holder).bindData(post.get(position), position);
-    }
+    public static class CommentViewHolder extends BaseRecyclerViewHolder<PostModel> {
 
-    @Override
-    public int getItemCount() {
-        return post.size();
-    }
+        @BindView(R.id.iv_comment_user)
+        public ImageView ivCommentUser;
 
-    public static class ViewHolderComment extends RecyclerView.ViewHolder {
-        public ImageView picture;
-        public TextView comment;
-        private OnItemClickListener onItemClickListener;
+        @BindView(R.id.tv_comment)
+        public TextView tvComment;
 
-        public ViewHolderComment(View itemView, ViewGroup parent, OnItemClickListener onItemClickListener) {
-            super(itemView);
-            this.onItemClickListener = onItemClickListener;
-            picture = (ImageView) itemView.findViewById(R.id.imageView);
-            comment = (TextView) itemView.findViewById(R.id.textView8);
+        public CommentViewHolder(Context context, View itemView) {
+            super(context, itemView);
         }
 
-        public void bindData(PostModel postModel, int position) {
-            comment.setText(postModel.getTitle());
-            picture.setImageResource(R.drawable.raisa);
-            itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
+        @Override
+        public void bindData(PostModel data) {
+            tvComment.setText(data.getTitle());
+            //TODO please change using Glide
+            ivCommentUser.setImageResource(R.drawable.raisa);
         }
     }
 }

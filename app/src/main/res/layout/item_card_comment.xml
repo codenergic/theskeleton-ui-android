@@ -5,15 +5,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_horizontal_margin">
     <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_comment_user"
             android:layout_width="@dimen/profile_picture_default"
             android:layout_height="@dimen/profile_picture_default"
             android:src="@drawable/raisa"/>
     <LinearLayout android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_toEndOf="@+id/imageView"
+                  android:layout_toEndOf="@+id/iv_comment_user"
                   android:orientation="vertical"
-                  android:layout_alignBottom="@+id/imageView"
+                  android:layout_alignBottom="@+id/iv_comment_user"
                   android:id="@+id/linearLayout"
                   android:layout_alignParentTop="true"
                   android:paddingLeft="@dimen/title_padding"
@@ -22,7 +22,7 @@
                 android:text="@string/dummy_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/textView2"
+                android:id="@+id/tv_comment_user"
                 android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textStyle="bold"
@@ -33,16 +33,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:id="@+id/textView3"
+                android:id="@+id/tv_comment_date"
                 android:layout_weight="1"/>
     </LinearLayout>
     <TextView
             android:text="@string/dummy_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView"
+            android:layout_below="@+id/iv_comment_user"
             android:layout_alignParentStart="true"
-            android:id="@+id/textView8"
+            android:id="@+id/tv_comment"
             android:layout_marginTop="10dp"
             android:layout_alignParentEnd="true"
             android:maxLines="5"/>

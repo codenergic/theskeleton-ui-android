@@ -28,7 +28,7 @@ public class CommentActivity extends BaseEditorActivity implements CommentContra
         showBackIconToolbar(true);
         setTitleToolbar(null);
         editor.setPadding(20, 20, 20, 20);
-        editor.setPlaceholder("Write a comment...");
+        editor.setPlaceholder("Write a tvComment...");
         setRichEditor(editor);
     }
 
