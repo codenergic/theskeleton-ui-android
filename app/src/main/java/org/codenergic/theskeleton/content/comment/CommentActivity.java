@@ -4,6 +4,7 @@ import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BaseEditorActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.model.UserModel;
 
 import android.view.Menu;
 import android.widget.ImageButton;
@@ -47,4 +48,8 @@ public class CommentActivity extends BaseEditorActivity implements CommentContra
         return true;
     }
 
+    @Override
+    public void onAuthorized(UserModel userModel) {
+
+    }
 }

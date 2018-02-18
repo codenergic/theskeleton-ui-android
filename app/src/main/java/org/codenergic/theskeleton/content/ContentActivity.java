@@ -3,9 +3,11 @@ package org.codenergic.theskeleton.content;
 import org.codenergic.theskeleton.R;
 import org.codenergic.theskeleton.base.BaseActivity;
 import org.codenergic.theskeleton.base.BasePresenter;
+import org.codenergic.theskeleton.base.auth.BaseAuthActivity;
 import org.codenergic.theskeleton.content.comment.CommentActivity;
 import org.codenergic.theskeleton.content.comment.CommentAdapter;
 import org.codenergic.theskeleton.main.MainActivity;
+import org.codenergic.theskeleton.model.UserModel;
 
 import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
@@ -25,7 +27,7 @@ import dagger.android.AndroidInjection;
 /**
  * Created by diasa on 12/9/17.
  */
-public class ContentActivity extends BaseActivity implements ContentContract.View,
+public class ContentActivity extends BaseAuthActivity implements ContentContract.View,
     OnItemClickListener {
 
     @BindView(R.id.content)
@@ -83,6 +85,11 @@ public class ContentActivity extends BaseActivity implements ContentContract.Vie
 
     @Override
     public void onItemClick(int position) {
+
+    }
+
+    @Override
+    public void onAuthorized(UserModel userModel) {
 
     }
 }
